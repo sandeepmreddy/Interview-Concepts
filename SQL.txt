@@ -1,0 +1,23 @@
+SQL VS NOSQL
+
+Nth Highest salary
+select * from(
+select ename, sal, dense_rank() 
+over(order by sal desc)r from Employee) 
+where r=&n;
+
+Query performance:
+
+2. Avoid * in SELECT statement. Give the name of columns which you require.
+
+6. Avoid Having Clause. Having clause is required if you further wish to filter the result of an aggregations.
+7. Create Indexes.
+10. Drop unused Indexes.
+12. Use joins instead of sub-queries.
+13. Use WHERE expressions to limit the size of result tables that are created with joins.1
+17. Avoid Cursors since cursor are very slow in performance.
+21. Use Stored Procedure for frequently used data and more complex queries.
+22. Keep transaction as small as possible since transaction lock the processing tables data and may results into deadlocks.
+
+
+

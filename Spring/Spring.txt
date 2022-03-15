@@ -1,0 +1,160 @@
+https://www.interviewbit.com/spring-interview-questions/
+1. Spring has various frameworks like Dependency Injection, Spring MVC, Spring JDBC, 
+A)Spring Hibernate, Spring AOP, EJB, JSF, etc.
+There are around 20 modules which are generalized into the following types:
+Core Container
+Data Access/Integration
+Web
+AOP (Aspect Oriented Programming)
+Instrumentation
+Messaging
+Test
+
+2. What are the features of Spring Framework?
+https://mkyong.com/spring3/spring-aop-aspectj-annotation-example/
+
+@Around("@annotation(com.asg.mobius.view.core.common.services.aspects.ValidateLicense)")
+public Object checkLicense(ProceedingJoinPoint joinPoint) throws Throwable {
+	if (licenseAspectHandler.isBypass()) {
+		return joinPoint.proceed();
+	}
+	final MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+	ValidateLicense licenseAnnotation = signature.getMethod().getAnnotation(ValidateLicense.class);
+	if (licenseAnnotation == null) {
+		throw new IllegalArgumentException("Annotation ValidateLicense is invalid");
+	}
+	service.checkIfLicensedForCurrentClient();
+	service.checkIfLicensedForOptions(licenseAnnotation.options());
+	return joinPoint.proceed();
+}
+	
+The AOP (Aspect Oriented Programming) part of Spring supports unified development by ensuring separation of application’s business logic from other system services.
+Spring provides highly configurable MVC web application framework which has the ability to switch to other frameworks easily.
+Provides provision of creation and management of the configurations and defining the lifecycle of application objects.
+Spring has a special design principle which is known as IoC (Inversion of Control) that supports objects to give their dependencies rather than looking for creating dependent objects.
+Spring is a lightweight, java based, loosely coupled framework.
+Spring provides generic abstraction layer for transaction management that is also very useful for container-less environments.
+3.What are the bean scopes available in Spring?
+The Spring Framework has five scope supports. They are:
+
+Singleton: The scope of bean definition while using this would be a single instance per IoC container.
+Prototype: Here, the scope for a single bean definition can be any number of object instances.
+Request: The scope of the bean definition is an HTTP request.
+Session: Here, the scope of the bean definition is HTTP-session.
+Global-session: The scope of the bean definition here is a Global HTTP session.
+Note: The last three scopes are available only if the users use web-aware ApplicationContext container
+
+10. Explain Bean life cycle in Spring Bean Factory Container.
+1. instantiation
+2.setBeanname()
+3.setBeanFactory()
+4.If BeanPostProcessors is associated with a bean, then the preProcessBeforeInitialization() methods are invoked.
+5.If an init-method is specified, then it will be called.
+6.postProcessAfterInitialization()
+
+11. What is Spring AOP?
+A cross-cutting concern such as transaction management, authentication, logging, security etc
+There are 2 types of implementing Spring AOP:
+Using XML configuration files
+Using AspectJ annotation style
+
+12. There are 2 types of implementing Spring AOP:
+
+Using XML configuration files
+Using AspectJ annotation style
+What is an advice? Explain its types in spring.
+An advice is the implementation of cross-cutting concerns can be applied to other modules of the
+ spring application. Advices are of mainly 5 types:
+
+Before:
+This advice executes before a join point, but it does not have the ability to prevent execution flow from proceeding to the join point (unless it throws an exception).
+To use this, use @Before annotation.
+AfterReturning:
+This advice is to be executed after a join point completes normally i.e if a method returns without throwing an exception.
+To use this, use @AfterReturning annotation.
+AfterThrowing:
+This advice is to be executed if a method exits by throwing an exception.
+To use this, use @AfterThrowing annotation.
+After:
+This advice is to be executed regardless of the means by which a join point exits (normal return or exception encounter).
+To use this, use @After annotation.
+Around:
+This is the most powerful advice surrounds a join point such as a method invocation.
+To use this, use @Around annotation
+
+13. What are some of the classes for Spring JDBC API?
+Following are the classes
+JdbcTemplate
+SimpleJdbcTemplate
+NamedParameterJdbcTemplate
+SimpleJdbcInsert
+SimpleJdbcCall
+The most commonly used one is JdbcTemplate. This internally uses the JDBC API and has the advantage that we don’t need to create connection, statement, start transaction, commit transaction, and close connection to execute different queries. 
+All these are handled by JdbcTemplate itself. The developer can focus on executing the query directly.
+
+14. How can you fetch records by Spring JdbcTemplate?
+This can be done by using the query method of JdbcTemplate. There are two interfaces that help to do this:
+https://www.javatpoint.com/spring-JdbcTemplate-tutorial
+ResultSetExtractor:
+It defines only one method extractData that accepts ResultSet instance as a parameter and returns the list.
+Syntax:
+public T extractData(ResultSet rs) throws SQLException,DataAccessException;
+RowMapper:
+This is an enhanced version of ResultSetExtractor that saves a lot of code.
+It allows to map a row of the relations with the instance of the user-defined class.
+It iterates the ResultSet internally and adds it into the result collection 
+thereby saving a lot of code to fetch records.
+
+15. What are the two ways of accessing Hibernate by using Spring.
+Inversion of Control approach by using Hibernate Template and Callback.
+Extending HibernateDAOSupport and Applying an AOP Interceptor node.
+
+16. Spring Hibernate Integration
+https://www.javatpoint.com/hibernate-and-spring-integration
+<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" p:sessionFactory-ref="sessionFactory" />
+<bean id="mysessionFactory" class="org.springframework.orm.hibernate3.HibernateTemplate">  
+    <property name="sessionFactory" ref="mysessionFactory"></property>  
+    </bean>  
+	
+	 <bean id="d" class="com.javatpoint.EmployeeDao">  
+    <property name="mysessionFactory" ref="mysessionFactory"></property>  
+    </bean>
+	
+	 <bean id="d" class="com.javatpoint.EmployeeDao">  
+	 <property name="transactionManager">
+        <ref bean="transactionManager"/>
+    </property>
+    <property name="sessionfactory" ref="mysessionFactory"></property>  
+    </bean>
+	
+	<bean id="mysessionFactory"  class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">  
+        <property name="dataSource" ref="dataSource"></property>  
+		</bean>
+		
+		@Transactional in Spring
+		
+47. What is the importance of the web.xml in Spring MVC?
+web.xml is also known as the Deployment Descriptor which has definitions of the servlets and their mappings,
+ filters, and lifecycle listeners. It is also used for configuring the ContextLoaderListener. 
+ Whenever the application is deployed, a ContextLoaderListener instance is created by Servlet container 
+ which leads to a load of WebApplicationContex
+
+52. Are singleton beans thread-safe?
+No, 
+53. How can you achieve thread-safety in beans?
+The thread safety can be achieved by changing the scope of the bean to request, 
+session or prototype but at the cost of performance. This is purely based on the project requirements 
+54.What are Spring Interceptors?
+Spring Interceptors are used to pre-handle and post-handle the web requests in Spring MVC which are handled by Spring Controllers. This can be achieved by the HandlerInterceptor interface.
+
+55. Spring txn Propagations :
+Required : continue with same txn else create new tx
+Required New :Always new txn. It will not rollback inner transactions
+Nested : It will rollback inner transactions
+Supports : support with or without txn
+Not Supports : does not support txn ad go with out txn
+Mandatory: When the propagation is MANDATORY, if there is an active transaction, then it will be used. If there isn't an active transaction, then Spring throws an exception:
+Never : it throws not txn support exception
+
+56.@Qualifier: There may be a situation when you create more than one bean of the same type and want to wire only one of them with a property. In such cases, you can use the @Qualifier annotation along with @Autowired to remove the confusion by specifying which exact bean will be wired. Following is an example to show the use of @Qualifier annotation.
+https://www.baeldung.com/spring-qualifier-annotation

@@ -1,0 +1,138 @@
+https://www.interviewbit.com/spring-boot-interview-questions/
+Spring Boot latest version 2.4. 5
+
+1. Spring Boot : 
+1.Embeded tomcat
+2.The @SpringBootApplication annotation is equivalent 
+to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes.
+3.Used to create spring application
+4.A module of the spring
+5.Auto dependency resolution and Auto Configuration
+6.Embeded Http services
+7.Spring boot cli
+2. How to remove tomcat from Spring boot
+
+Remove default tomcat
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <exclusions>
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+	
+Change Port : By using the server.port in the application.properties
+
+3. Spring Boot Advantages
+1. Auto configuration
+2.Creates stanalone application
+3.Embeded tomcat
+4.Simply maven configuration
+5.Integration with Spring ecosystem like spring jdbc,spring ORM,Spring Data and Spring Security by easily avoid boiler plate
+
+4. How does a spring boot application get started?
+
+@SpringBootApplication 
+public class MyApplication { 
+   
+       public static void main(String[] args) {    
+    
+             SpringApplication.run(MyApplication.class);        
+               // other statements     
+       } 
+}
+5. What are starter dependencies?
+Spring boot starter is a maven template that contains a collection of all the relevant transitive dependencies that are needed to start a particular functionality.
+Like we need to import spring-boot-starter-web dependency for creating a web application.
+
+<dependency>
+<groupId> org.springframework.boot</groupId>
+<artifactId> spring-boot-starter-web </artifactId>
+</dependency>
+
+6. What is Spring Initializer?
+Spring Initializer is a web application that helps you to create an initial spring boot project structure 
+and provides a maven or gradle file to build your code. It solves the problem of setting up a framework 
+when you are starting a project from scratch.
+
+7. What is Spring Boot CLI and what are its benefits?
+Spring Boot CLI is a command-line interface that allows you to create a spring-based java application using Groovy.
+
+8. What are the most common Spring Boot CLI commands?
+-run, -test, -grap, -jar, -war, -install, -uninstall, --init, -shell, -help.
+
+9. What Are the Basic Annotations that Spring Boot Offers?
+The primary annotations that Spring Boot offers reside in its org.springframework.boot.autoconfigure 
+and its sub-packages. Here are a couple of basic ones:
+
+@EnableAutoConfiguration – to make Spring Boot look for auto-configuration beans on its classpath 
+and automatically apply them.
+
+@SpringBootApplication – used to denote the main class of a Boot Application. 
+This annotation combines @Configuration, @EnableAutoConfiguration, and @ComponentScan annotations 
+with their default attributes.
+
+10. Can we override or replace the Embedded tomcat server in Spring Boot?
+Yes, we can replace the Embedded Tomcat server with any server by using the Starter dependency 
+in the pom.xml file. Like you can use spring-boot-starter-jetty as a dependency for using a 
+jetty server in your project.
+
+11. Can we disable the default web server in the Spring boot application?
+Yes, we can use application.properties to configure the web application type 
+i.e spring.main.web-application-type=none.
+
+12. How to disable a specific auto-configuration class?
+You can use exclude attribute of @EnableAutoConfiguration if you want auto-configuration 
+not to apply to any specific class.
+
+//use of exclude
+@EnableAutoConfiguration(exclude={className})
+
+13. What is Spring Actuator? What are its advantages?
+An actuator is an additional feature of Spring that helps you to monitor and manage your application when you push it to production. These actuators include auditing, health, CPU usage, HTTP hits, and metric gathering, and many more that are automatically applied to your application.
+
+14. How to enable Actuator in Spring boot application?
+To enable the spring actuator feature, we need to add the dependency of “spring-boot-starter-actuator” in pom.xml.
+
+<dependency>
+<groupId> org.springframework.boot</groupId>
+<artifactId> spring-boot-starter-actuator </artifactId>
+</dependency>
+
+15. What are the actuator-provided endpoints used for monitoring the Spring boot application?
+Actuators provide below pre-defined endpoints to monitor our application -
+
+Health
+Info
+Beans
+Mappings
+Configprops
+Httptrace
+Heapdump
+Threaddump
+Shutdown
+
+25. Can the default web server in the Spring Boot application be disabled?
+Yes! application.properties is used to configure the web application type, 
+by mentioning spring.main.web-application-type=none
+
+15. How to get the list of all the beans in your Spring boot application?
+Spring Boot actuator “/Beans” is used to get the list of all the spring beans in your application.
+
+16. How to check the environment properties in your Spring boot application?
+Spring Boot actuator “/env” returns the list of all the environment properties of running the spring boot application.
+
+17. Global exception handling of Spring boot is 
+@ControllerAdvice
+Class GlobalExcpetionHandler
+
+Whereever we want to handle exception in Class @ExceptionHandler
+
+18. Spring Vs Spring Boot
+1.In Spring applicationContext.xml,web.xml
+2.Spring Boot -Only all are artifact ids in the pom.xml
+3.The @SpringBootApplication annotation is equivalent 
+to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes.

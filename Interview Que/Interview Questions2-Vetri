@@ -1,0 +1,29 @@
+Q)Static methods can be overiden?
+A)No.A static method is not associated with any instance of a class so the concept is not applicable.
+Q)How do you use authentication and Authorization?
+authentication in filter like Security Filter
+Authorization is using JWt token
+Q)What is Race condition in java?
+
+Race condition in Java occurs in a multi-threaded environment when more than one thread try to access a shared resource (modify, write) at the same time. Since multiple threads try to race each other to finish executing a method thus the name race condition.
+
+Q)How to avoid Race condition in java?
+Race conditions can be avoided by proper thread synchronization in critical sections. Thread synchronization can be achieved using a synchronized block of Java code. Thread synchronization can also be achieved using other synchronization constructs like locks or atomic variables like java.
+
+Q)What is atomic variables in java?
+
+The most commonly used atomic variable classes in Java are AtomicInteger, AtomicLong, AtomicBoolean, and AtomicReference. set() – writes the value to memory, so that the change is visible to other threads; equivalent to writing a volatile variable.
+
+Q)Voltaile Atomic VS 
+
+here are two important concepts in multithreading environment:
+
+atomicity
+visibility
+The volatile keyword eradicates visibility problems, but it does not deal with atomicity. volatile will prevent the compiler from reordering instructions which involve a write and a subsequent read of a volatile variable; e.g. k++. Here, k++ is not a single machine instruction, but three:
+
+copy the value to a register;
+increment the value;
+place it back.
+So, even if you declare a variable as volatile, this will not make this operation atomic; this means another thread can see a intermediate result which is a stale or unwanted value for the other thread.
+

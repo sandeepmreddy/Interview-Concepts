@@ -1,0 +1,46 @@
+<div> <input type="button" click="adItem()" </div>
+
+import { Component } from '@angular/core';
+
+@Component ({
+   selector: 'addItem',
+   template: `addItem.html`,
+})
+
+export class AppComponent {
+   title: string = 'Adding items';
+   name: String;
+   qty:Integer;
+   
+   constrctor(itemService: ItemService)
+   {
+   }
+   
+   adItem()
+   {
+     itemService.addItem(name,qty);
+   }
+   
+}
+
+export class ItemService()
+{
+ constrctor(itemResource:ItemResource)
+   {
+   }
+   adItem()
+   {
+   item.setQty(qty);
+   item.setName(name);
+     itemService.addItem();
+   }
+}
+
+export class ItemResource()
+{
+constructor(private http: HttpClient) { }
+   addItem(item: Item) {
+  return this.http.post(
+    addItemUrl, item);
+}
+}

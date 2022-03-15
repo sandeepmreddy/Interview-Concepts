@@ -1,0 +1,36 @@
+      50 ->null
+  30  ->     70 ->Null
+20->40 -> 60 ->  80->null
+
+Class Node
+{
+int data;
+Node left ;
+Node right;
+Node next;
+}
+
+public Node populate(Node root)
+{
+Node node;
+int counter =0;
+while(root.left!=null)
+{
+counter++;
+while(root.right!=null)
+{
+
+}
+node.
+}
+if(root.data!=null)
+{
+
+}
+
+
+
+
+return node;
+level ordering
+ 

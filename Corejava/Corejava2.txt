@@ -1,0 +1,33 @@
+Markeable interface : No methods(Cloneable,Sreializable)
+Cloneable: There is a method clone() in the Object class.
+
+Composition-> one to one and one to many
+Aggregation --> child is independenat of parent
+Association ->child doesnot exist without parent
+
+
+ConcurrenthashMap--Segment/Bucket locking
+
+How to create Immutable class?
+1.Class should be the final --. Not to override
+2.Inside methods and variables are private and final
+3.Public constrcttor
+4.No Setter methods/only getter methods
+
+
+3. Can singleton implement interface?
+If a singleton is not a static class, it can implement any interface you want. The only thing that a singleton pattern prevents is instantiation of multiple instances of a singleton class, but that doesn't mean you cannot completely replace the implementation with something else.
+
+4.Can we override the static method in Java?
+The answer to this question is No, you cannot override the static method in Java because the method overriding is based upon dynamic binding at runtime and static methods are bonded using static binding at compile time. This means static methods are resolved even before objects are created, that's why it's not possible to override static methods in Java. Though you can declare a method with the same name and method signature in the subclass which does look like you can override static methods in Java but in reality that is method hiding. 
+
+
+In short, you can not override the static method in Java. If you use Java IDE like Eclipse or Netbeans, they will show a warning that the static method should be called using class name and not by using object because a static method can not be overridden in Java.
+
+Top-10-tough-core: https://www.java67.com/2012/09/top-10-tough-core-java-interview-questions-answers.html
+
+Java code optimization:
+
+https://www.geeksforgeeks.org/12-tips-to-optimize-java-code-performance/
+
+java performance tool : JProfiler

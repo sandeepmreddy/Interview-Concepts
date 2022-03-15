@@ -1,0 +1,96 @@
+12.public class Java8Predicate {
+
+    public static void main(String[] args) {
+
+        Predicate<Integer> noGreaterThan5 =  x -> x > 5;
+
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        List<Integer> collect = list.stream()
+                .filter(noGreaterThan5)
+                .collect(Collectors.toList());
+
+        System.out.println(collect); // [6, 7, 8, 9, 10]
+
+    }
+	
+Stream features?
+
+Java 8 Programming Language Enhancements
+Java 8 provides following features for Java Programming:
+
+Lambda expressions,
+Method references,
+Functional interfaces,
+Stream API,
+Optional class,
+Collectors class,
+ForEach() method,
+Default methods,
+Base64 Encode Decode,
+Static methods in interface,
+IO Enhancements,
+Concurrency Enhancements,
+
+
+@FunctionalInterface Important Points/Observations:  
+
+1.A functional interface has only one abstract method but it can have multiple default methods.
+2. @FunctionalInterface annotation is used to ensure an interface can’t have more than one abstract method. The use of this annotation is optional.
+3. The java.util.function package contains many builtin functional interfaces in Java 8.
+
+interface TestInterface
+{
+    // abstract method
+    public void square(int a);
+  
+    // default method
+    default void show()
+    {
+      System.out.println("Default Method Executed");
+    }
+}
+
+@FunctionalInterface
+public interface Predicate<T>
+
+boolean	test(T t) -- SAM
+Evaluates this predicate on the given argument.
+
+default Predicate<T>	and(Predicate<? super T> other)
+Returns a composed predicate that represents a short-circuiting logical AND of this predicate and another.
+default Predicate<T>	negate()
+Returns a predicate that represents the logical negation of this predicate.
+default Predicate<T>	or(Predicate<? super T> other)
+Returns a composed predicate that represents a short-circuiting logical OR of this predicate and another.
+static <T> Predicate<T>	isEqual(Object targetRef)
+Returns a predicate that tests if two arguments are equal according to Objects.equals(Object, Object).
+
+@FunctionalInterface
+public interface Consumer<T>
+
+Modifier and Type	Method and Description
+void	accept(T t)  -- SAM
+        Performs this operation on the given argument.
+default Consumer<T>	andThen(Consumer<? super T> after)
+        Returns a composed Consumer that performs, in sequence, this operation followed by the after operation.
+
+@FunctionalInterface
+public interface Supplier<T>
+
+Modifier and Type	Method and Description
+T	get() -- SAM
+   Gets a result.
+   
+@FunctionalInterface
+public interface Function<T,R>
+
+Modifier and Type	Method and Description
+default <V> Function<T,V>	andThen(Function<? super R,? extends V> after)
+Returns a composed function that first applies this function to its input, and then applies the after function to the result.
+R	apply(T t) -- SAM
+Applies this function to the given argument.
+default <V> Function<V,R>	compose(Function<? super V,? extends T> before)
+Returns a composed function that first applies the before function to its input, and then applies this function to the result.
+static <T> Function<T,T>	identity()
+Returns a function that always returns its input argument.

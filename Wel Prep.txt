@@ -1,0 +1,32 @@
+
+
+Serializable Interface in Java:
+1. The Serializable interface is present in java.io package. It is a marker interface. 
+A Marker Interface does not have any methods and fields.
+Serialization is a mechanism of converting the state of an object into a byte stream.
+ Serialization is done using ObjectOutputStream. 
+Deserialization is the reverse process where the byte stream is used to recreate the actual Java object in memory. 
+This mechanism is used to persist the object. Deserialization is done using ObjectInputStream. 
+
+2. public static class Student implements Serializable 
+
+Serialization Object -->ByteStream
+De Serialization ByteStream-->Object
+
+3. HashMap Internal implementation
+index = hashCode(key) & (n-1)
+
+Custom HaspMap
+
+public class Entry<K, V> {
+
+    private K key;
+    private V value;
+    private Entry<K, V> next;
+
+    public Entry(K key, V value, Entry<K, V> next){
+	
+4. Dispatcher Servlet->handler mapping->conroller(response Model view)->view resolver->view
+	
+	
+	

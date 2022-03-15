@@ -1,0 +1,180 @@
+APIGateWay-->ConfigServer
+Micro services
+
+Netflix opensource libraries
+Eureka
+Spring Cloud Configuration server/Zuul/Apache Zoo Keeper(APIGateWay-ConfigServer)
+Ribbon 
+Hysterix
+Slueth/Zipkin
+
+Micro services design aptterns
+API Gateway.
+Chain of Responsibility.
+Asynchronous Messaging.
+Database or Shared Data.
+Circuit breaker
+
+
+Ribbon --> Spring-cloud-starter-netflix-ribbon go in round robin load balancing
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+    <version>2.2.10.RELEASE</version>
+</dependency>
+
+Sleuth is another tool from the Spring cloud family. It is used to generate the trace id, span id and add this information to the service calls in the headers and MDC, so that It can be used by tools like Zipkin and ELK etc. to store, index and process log files. requests made with the RestTemplate etc.
+{service name,trace id, span id,export flag}
+
+trace id is same id across all services
+span id is indivdual to each service
+
+Zipkin is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures. 
+1. Run the zipkin jar
+2. open the zipkin dashboard using localhost:9411/zipkin
+
+In services Add
+1. Spring-cloud-starter-slueth
+2. Spring-cloud-starter-zipkin
+In services yaml spring.zipkin.base-url: http://localhost:9411/
+
+Zuul
+@SpringBootApplication
+@EnableZuulProxy
+ContentGateWayApplication
+
+ContentGateWayApplication application.yaml
+zuul.routes.doctor.service.path=/doctor-api/**
+zuul.routes.doctor.service.url=http://localhost:8081
+
+ContentGateWayApplication PreFilter,PostFilter,ErrorFilter,RouterFilter
+
+Eurekha Server - Discovery Server -Spring Cloud
+
+Eurekha clients(Services) register with Eurekha Server.
+UI and all services register in the Eurekha Server.
+1.Start Eurekha Server
+2.Publish mirco services using eurekha client
+3.Consume mirco services using eurekha client
+4.Eurekha Client(UI)
+
+In Eurekha Server - Discovery Server
+@EnableEurekhaServer
+Include artifactid spring-cloud-starter-netflix-eurekha-server in pom.xml
+Run the Spring Boot Discovery Server
+1)Open the Eurekha DashBoard localhost:8761
+2)Check instances currently registered with eurekha
+
+In the all the eurekha client microservices include
+Include artifactid spring-cloud-starter-netflix-eurekha-client in pom.xml
+spring.application.name=navigation-service
+@EnableEurekhaClient
+
+@Loadbalanced --> Add this on rest template of the micro service
+
+@SpringBootApplication
+@RestController
+@RibbonClient(name = "app", configuration = RibbonConfig.class)
+public class App {
+
+  @LoadBalanced
+  @Bean
+  RestTemplate restTemplate(){
+    return new RestTemplate();
+  }
+  //...
+}
+
+restTemplate.getForObject(
+restTemplate.postForObject(
+restTemplate.exchange(
+
+Configuration server -To maintain common properties - webhook 
+Apache Zoo Keeper/Spring Cloud Configuration server is the Configuration server
+
+Create a Spring boot project with artifact id Spring-Cloud-Configuration-server
+and you will have artifact id Spring-Cloud-Configuration-server
+Add @EnableConfigServer in the main Class
+Add Git url in the application.properties spring.cloud.config.server.git.uri= git url
+
+MicroServices--->Spring-Cloud-Configuration-server -->GIT Repo
+
+Spring-Cloud-Config-Client-->
+In every micro service add artifact spring-cloud-starter-config
+Add in the application.properties 
+spring.cloud.config.url=http://localhost:8888 --Generic properties here
+spring.application.name= spring-boot-config(Specific service name)
+
+In git url  project create application.properties
+http://localhost:8888/application/default
+
+Update the micro service properties from config server
+1.Add artificat in micro service spring-boot-starter-actuator -- it is webhook to bring the config refresed values
+2.Add @RefreshScope in the Bean Class
+3.wake up the client by calling the http://localhost:8080/actuator/refresh in postman
+
+Ribbon
+Hystrix - Failure mechanisam
+
+In service bootstrap.properties , app.name, clould.config.uri 
+Zipkin - Per request - 1 trasaction across all applications -smiliar to Slueth  id
+
+
+4) What are the advantages of microservices?
+
+Here, are some significant advantages of using Microservices:
+
+Technology diversity, e., Microservices can mix easily with other frameworks, libraries,  and databases
+Fault isolation, e., a process failure should not bring the whole system down.
+Greater support for smaller and parallel team
+Independent deployment
+Deployment time reduce
+
+8) What are the challenges faced while using Microservices?
+
+Microservices always rely on each other. Therefore, they need to communicate with each other.
+As it is distributed system, it is a heavily involved model.
+If you are using Microservice architecture, you need to ready for operations overhead.
+You need skilled professionals to support heterogeneously distributed microservices.
+
+9. micro services testing
+1.Unit testing
+2.Contract testing
+3.Acceptance testing
+
+10) Explain the use of PACT in Microservices architecture?
+The Pact Framework is an Implementation of Consumer Driven Contracts. These are simple JSON files that define expected request and response structure between two microservices. ... You can leverage this to test your microservices locally and on a CI environment
+It is an open source tool which allows testing interactions between service providers and consumers.
+
+11) What is the meaning of OAuth?
+
+OAuth means open authorization protocol. This protocol allows you to access the client applications on HTTP for third-party providers GitHub, Facebook, etc. It helps you to share resources stored on one site with another site without the need for their credentials.
+
+12)"ELK" is the acronym for three open source projects: Elasticsearch, Logstash, and Kibana.
+
+
+There are a lot of options for asynchronous integration in Microservices:
+Kafka
+ActiveMQ
+
+Advanced Message Queuing Protocol (AMQP) could be used.
+
+The main difference between scaling up and scaling out is that horizontal scaling simply adds more machine resources to your existing machine infrastructure. Vertical scaling adds power to your existing machine infrastructure by increasing power from CPU or RAM to existing machines.
+
+On Class
+@EnableHystrixDashboard
+@EnableCircuitBreaker
+
+On Methods
+@HystrixCommand(fallbackMethod = "callStudentServiceAndGetData_Fallback")
+
+Fluentd(Log collector): To Trasform data into Unified Format and Stores into EWlatic Search,S3,Kafka that is collected from different sources.
+
+Enrich Data like redact important data.
+
+Fluentd scraps logs from a given set of sources, processes them (converting into a structured data format) and then forwards them to other services like Elasticsearch, object storage etc. ... Fluentd gets data from multiple sources. It structures and tags data.
+
+EFK VS ELK
+FluentD and Logstash are both open source data collectors used for Kubernetes logging. Logstash is centralized while FluentD is decentralized. FluentD offers better performance than Logstash.
+
+

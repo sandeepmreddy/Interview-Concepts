@@ -1,0 +1,294 @@
+TCS
+-----------
+1.Spring Bean Scopes:
+
+2.The @ConditionalOnMissingBean annotation is used to load a bean only if a given bean is missing:
+
+@Bean
+@ConditionalOnMissingBean(SomeBean.class)
+public SomeBean otherBean(){
+    return new SomeBean();
+}
+The above bean will get loaded by Spring only if there is no other bean of this type present in the context. On the other hand, if there is already a bean of the type SomeBean present in the application context, the above bean will not be created.
+
+3.Controller Vs restController
+
+The @Controller is a annotation to mark class as Controller Class in Spring While @RestController is used in REST Web services and similar to @Controller and @ResponseBody.
+
+TCS 
+-----------------------
+1.First three higest words in Map
+
+[1,3,5}
+
+ArayList
+Map m= new HashMap();
+
+for(i=0;i,list.size();i++)
+{
+String word=list.get(i);
+
+  if(list.conains(word))
+  {
+     m.put(word,m.get(word)+);
+  
+  }else
+  {
+     m.put(word,1);
+  }
+
+
+}
+rahu 15
+sandeep 10
+Ravi 3
+
+List<String> keys = hm.entrySet().stream().sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).limit(3).map(Map.Entry::getKey).collect(Collectors.toList());
+
+2.Sort the employee by name and salary in Arraylist
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+ 
+public class Main 
+{
+  public static void main(String[] args) 
+  {
+    ArrayList<Employee> employees = getUnsortedEmployeeList();
+     
+    //Compare by first name and then last name
+    Comparator<Employee> compareByName = Comparator
+                        .comparing(Employee::getFirstName)
+                        .thenComparing(Employee::getLastName);
+     
+    List<Employee> sortedEmployees = employees.stream()
+                    .sorted(compareByName)
+                    .collect(Collectors.toList());
+     
+    System.out.println(sortedEmployees);
+  }
+ 
+  private static ArrayList<Employee> getUnsortedEmployeeList() 
+  {
+    ArrayList<Employee> list = new ArrayList<>();
+    list.add( new Employee(2l, "Lokesh", "Gupta") );
+    list.add( new Employee(1l, "Alex", "Gussin") );
+    list.add( new Employee(4l, "Brian", "Sux") );
+    list.add( new Employee(5l, "Neon", "Piper") );
+    list.add( new Employee(3l, "David", "Beckham") );
+    list.add( new Employee(7l, "Alex", "Beckham") );
+    list.add( new Employee(6l, "Brian", "Suxena") );
+        return list;
+  }
+}
+
+3.Middle element in the LinkedList.Custom programm.
+
+Ness 2nd Round
+-----------------
+1. Static methods mocked?
+2. Union all to get the entire results
+3. Left outer join
+4. thenReturn vs doReturn
+5. Spring Actuator for metrics
+
+Splunk Welsforgo
+-------------------
+Splunk is a software mainly used for searching, monitoring, and examining machine-generated Big Data through a web-style interface. 
+Splunk performs capturing, indexing, and correlating the real-time data in a searchable container from which it can produce graphs, 
+reports, alerts, dashboards, and visualizations.
+
+Nisum
+--------------
+1. @ConditionalOnProperty
+Now, let's see how to make use of the @ConditionalOnProperty annotation. Let's configure the NotificationSender bean in such a way that it will only be loaded if the property notification.service is defined:
+
+@Bean(name = "emailNotification")
+@ConditionalOnProperty(prefix = "notification", name = "service")
+public NotificationSender notificationSender() {
+    return new EmailNotification();
+}
+
+if no bean found in the application context
+@ConditionalOnMissingBean
+     @Bean
+     public MyService myService() {
+         ...
+     }
+2. Spring Annotations
+3. Angular files
+1.tsconfig.json	The base TypeScript configuration for projects in the workspace. 
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+	]}
+	]
+2.package.json --All dependecies with versions
+3.angular.json	CLI configuration defaults for all projects in the workspace, including configuration options for build, serve, and test tools that the CLI uses, such as Karma.	
+4.main.ts. This file acts as the entry point of the application. This entry point is defined in the internals of webpack that is used by Angular to support the modular functionality.
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+	
+4. let vs var vs const
+var is functional scope
+let is block scope if/for block
+const value is block scope if/for block and can't be reassigned
+5. Employee {
+String name;
+Integer id;
+Date doj;
+List<String> technologies;(Java,Javasc
+}
+5.To create angular project
+ng new <my-project>
+
+6.PUT vs PATCH
+
+PATCH HTTP Request: Unlike PUT Request, PATCH does partial update e.g. Fields that need to be updated by the client, only that field is updated without modifying the other field.
+
+So in the previous example, we have to send only the name and email field in the request body.
+
+1. Print the name of employee who has been with the organisation the longest
+2. Print the names of employees associated with a certain technology
+
+Sample Op: Java: A,B,C,D
+JavaScript: B,C,D,E
+
+List<Employee> employess= getEmployss();
+Employee e = employess.stream().min(Compartor.comparing(e::doj)).get();
+
+Employee e = employess.stream().gruoupBy(Employee::technologies,E).get();
+
+employess.stream().filter(e->e.).get();
+
+employess.foreach(e->{
+e.getTechnologies.forEach(t->
+
+if(t.equals("JAVA))
+
+
+
+});
+
+java: Ravi,Raju
+
+ICE
+----------------
+1.Duplcaite values using lambada
+
+numbersList.stream().distinct().collect(Collectors.toList());
+
+Itreator vs Spit Iterator
+
+
+The main functionalities of Spliterator are: 
+
+Splitting the source data
+Processing the source data
+The Interface Spliterator is included in JDK 8 for taking the advantages of parallelism in addition to sequential traversal. It is designed as a parallel analogue of an iterator.
+
+splitr2.forEachRemaining(
+                (n) -> System.out.println(n));
+				
+				
+Iterator can traverse only in forward direction whereas ListIterator traverses both in forward and backward directions.
+
+In for-each loop, we can’t modify collection, it will throw a ConcurrentModificationException on the other hand with iterator we can modify collection.  
+
+Modifying a collection simply means removing an element or changing content of an item stored in the collection.
+
+Technician
+------------------
+1.Check for balance parentheses in an expression
+1. Angular Prototype and bind, apply
+Function.prototype.bind is a built-in function, which creates a new function with the context bound to the context given from the parameter. The major use case for this function in Angular template is the property binding (@Input) of function.
+let calledTimes = 0;
+const originalBind = Function.prototype.bind;
+Object.defineProperty(
+  Function.prototype,
+  'bind',
+  {
+    value: function bind(context) {
+      console.log(`bind called ${++calledTimes} times`);
+      return originalBind.apply(this, arguments);
+    }
+  }
+);
+3. switchmap vs mergemap
+switchmap - Switch map hold the current observable if new observable comes in between the processing and process the new entry.
+mergemap -  finihes all the current observale requests.
+So here's the simple difference — switchMap cancels previous HTTP requests that are still in progress, while mergeMap lets all of them finish. In my case, I needed all requests to go through, as this is a metrics service that's supposed to log all actions that the user performs on the web page, so I used mergeMap .
+
+ @Effect() processExtDocDownloadResponse$: Observable<Action | Action[]> = this.actions$.pipe(
+    ofType(ContentStreamStatuses.PROCESS_EXT_DV_DOWNLOAD_STATUS_RESPONSE),
+    map((action: ContentStreamStatuses.ProcessExtDVDownloadStatusResponseAction) => action.payload),
+    withLatestFrom(this.store$.select(state => state)),
+    mergeMap(([payload, state]) => {
+      const actions: Action[] = [];
+      actions.push(new toastAction.removePermanentNotification(fromRoot.SOURCE.GLOBAL, state.contentStreamStatuses.persistentToastNotificationModel));
+      //Payload contains only error messages
+      if(!payload.response) {
+        actions.push(new toastAction.sendToastNotification(fromRoot.SOURCE.GLOBAL,
+          new MobiusUiToastNotificationModel(this.i18n({
+            value: "Download Succeeded",
+            id: 'Download_Success'
+          }), MobiusUiToastNotificationType.INFO, 5000)));
+      }
+      return actions;
+    })).pipe(catchError(err => {return of([]);}));
+	
+	
+	
+	getRecordTypes() {
+    this.subscribers.recordTypes = this.store.select(fromRoot.getRecordTypes(this.parentSource)).subscribe(data => {
+      if (data) {
+        let copy = [];
+        data.forEach(data => {
+          copy.push(data.name.trim());
+        });
+        this.recordTypes = [...copy];
+      }
+    });
+
+4. Angular Closure
+In the TypeScript programming language, a Closure is a special function.
+Similar to a function, a Closure is a block of statements with parameters and can return a value or nothing.
+Unlike a function, a closure has no name. However, you can identify it through a variable.
+
+5. Angular pipe
+You can use pipes to link operators together. Pipes let you combine multiple functions into a single function. The pipe() function takes as its arguments the functions you want to combine, and returns a new function that, when executed, runs the composed functions in sequence.
+6.Form Controller vs formgroup
+
+formgroup is created for many formcontrolls
+
+userForm = new FormGroup({
+     name: new FormControl(),
+     age: new FormControl('20')
+}); 
+
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+  Name: <input formControlName="name"  placeholder="Enter Name">
+  Age: <input formControlName="age"  placeholder="Enter Age">
+  <button type="submit">Submit</button> 
+</form> 
+
+Creating an Angular Reactive Form with FormGroup, FormControl and FormBuilder. In Angular, a reactive form is a FormGroup that is made up of FormControls. The FormBuilder is the class that is used to create both FormGroups and FormControls.
+
+TCS:
+________
+
+1.Apply or Call
+With the apply() method, you can write a method that can be used on different objects.
+2.bind
+With the bind() method, an object can borrow a method from another object.
+3.Closure
+Global variables can be made local (private) with closures.
+
+

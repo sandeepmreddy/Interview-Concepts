@@ -1,0 +1,28 @@
+1.RestTemplate
+a. The exchange() API
+Let's have a look at how to do a POST with the more generic exchange API:
+
+RestTemplate restTemplate = new RestTemplate();
+HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
+ResponseEntity<Foo> response = restTemplate
+  .exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
+ 
+assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
+ 
+Foo foo = response.getBody();
+ 
+assertThat(foo, notNullValue());
+assertThat(foo.getName(), is("bar"));
+
+<T> T	getForObject(URI url, Class<T> responseType)
+Retrieve a representation by doing a GET on the URL .
+
+<T> T	postForObject(String url, Object request, Class<T> responseType, Map<String,?> uriVariables)
+Create a new resource by POSTing the given object to the URI template, and returns the representation found in the response.
+
+void	put(String url, Object request, Map<String,?> uriVariables)
+Creates a new resource by PUTting the given object to URI template.
+
+void	delete(String url, Map<String,?> uriVariables)
+Delete the resources at the specified URI.
+

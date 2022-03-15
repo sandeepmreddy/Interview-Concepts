@@ -1,0 +1,34 @@
+input
+
+{[()]}
+{[(])}
+{{[[(())]]}}
+
+Ouput
+
+YES
+NO
+YES
+
+
+public checkExpression(String[] exp)
+{
+for(int i=0;i<exp.lenth();i++
+{
+if(exp[i].matches(Expression.reg({[())
+{
+
+}
+
+
+
+
+}
+
+
+
+
+}
+
+
+

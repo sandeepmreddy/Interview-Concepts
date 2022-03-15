@@ -1,0 +1,30 @@
+Spring Batch
+
+@SpringBootApplication
+@EnableScheduling
+public class App
+{
+  @Autowired
+  JobLauncher jobLauncher;
+   
+  @Autowired
+  Job job;
+   
+  public static void main(String[] args) 
+  {
+    SpringApplication.run(App.class, args);
+  }
+   
+  @Scheduled(cron = "0 */1 * * * ?")
+    public void perform() throws Exception 
+  {
+    JobParameters params = new JobParametersBuilder()
+        .addString("JobID", String.valueOf(System.currentTimeMillis()))
+        .toJobParameters();
+    jobLauncher.run(job, params);
+  }
+}
+
+JS Closure : Global variables can be made local (private) with closures.
+
+Bind: With the bind() method, an object can borrow a method from another object.

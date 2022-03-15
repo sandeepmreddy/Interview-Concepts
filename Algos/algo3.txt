@@ -1,0 +1,24 @@
+10,30,20,40
+
+k=1   40
+k=2   30
+
+
+public int getlarge(Int[] arry, int k)
+{
+Arrays.sort(arry); o(nlogn)
+int a=Array[array.length()+1-k);
+o(nlogk)
+for(int i=0;i<array.length;i++)
+{
+elment = array;
+
+for(int k=0;i<array.length;i++)
+
+
+
+
+
+
+}
+

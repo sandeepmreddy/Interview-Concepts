@@ -1,0 +1,29 @@
+@RunWith(SpringJUnit4ClassRunner.class)
+
+PowerMock is an extension to Mockito that allows mocking of static methods, constructors, final classes and methods, private methods, removal of static initializers and more.
+
+
+@BeforeClass
+    public static void beforeAllTestMethods() {
+        System.out.println("Invoked once before all test methods");
+    }
+ 
+    @Before
+    public void beforeEachTestMethod() {
+        System.out.println("Invoked before each test method");
+    }
+ 
+    @After
+    public void afterEachTestMethod() {
+        System.out.println("Invoked after each test method");
+    }
+ 
+    @AfterClass
+    public static void afterAllTestMethods() {
+        System.out.println("Invoked once after all test methods");
+    }
+	
+	 @Test
+    public void testOne() {
+        System.out.println("Test One");
+    }

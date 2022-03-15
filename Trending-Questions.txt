@@ -1,0 +1,101 @@
+The application is content management application, This will used for Banking and insurance companies.
+If there is a big report like 100 pages, then the report has topics like multiple accounts,cities,states,departments.
+For each of those data archived into separate Topics accounts,cities,departments. 
+This data can be viewed through navigation and can get using the saerch.
+This application has both view and admin pages.
+
+The flow of th applcaition is 
+
+Front end Angular Compoents, RX JS (state, Action,Effects)
+Backend is with legacy rest apis and Micro services
+
+APIGateWay-->Config Server->Many RestApis
+
+Execcutor Frame work
+Websphere and Weblogic cluster.
+
+1.JWT toekn has header,body,signature
+https://www.viralpatel.net/java-create-validate-jwt-token/
+1.private key at client and public key at server.
+JwtBuilder builder = Jwts.builder().setId(id)
+                                .setIssuedAt(now)
+                                .setSubject(subject)
+                                .setIssuer(issuer)
+                                .signWith(signatureAlgorithm, signingKey);
+								
+								return builder.compact();
+								
+								//This line will throw an exception if it is not a signed JWS (as expected)
+ The above will be converted like
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+...
+{
+    "jws": {
+        "body": {
+            "exp": 4622470422,
+            "iat": 1466796822,
+            "iss": "Stormpath",
+            "name": "Micah Silverman",
+            "scope": "admins",
+            "sub": "msilverman"
+        },
+        "header": {
+            "alg": "HS256"
+        },
+        "signature": "kP0i_RvTAmI8mgpIkDFhRX3XthSdP-eqqFKGcU92ZIQ"
+    },
+    "status": "SUCCESS"
+}
+ 
+//This line will throw an exception if it is not a signed JWS (as expected)
+    Claims claims = Jwts.parser()         
+       .setSigningKey(DatatypeConverter.parseBase64Binary(apiKey.getSecret()))
+       .parseClaimsJws(jwt).getBody();
+    System.out.println("ID: " + claims.getId());
+    System.out.println("Subject: " + claims.getSubject());
+    System.out.println("Issuer: " + claims.getIssuer());
+    System.out.println("Expiration: " + claims.getExpiration());
+	
+	
+2. Netflix Hysterix
+
+Hystrix is a library from Netflix. Hystrix isolates the points of access between the services, stops cascading failures across them and provides the fallback options.
+
+For example, when you are calling a 3rd party application, it takes more time to send the response. So at that time, the control goes to the fallback method and returns the custom response to your application.
+
+@HystrixCommand(fallbackMethod = "fallback_hello", commandProperties = {
+        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000"),
+        @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5")
+    })
+})
+private String fallback_hello() {
+   return "Request fails. It takes long time to response";
+   
+3. Log4j.properties
+
+log4j.rootLogger=DEBUG, stdout, file
+# Redirect log messages to console
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+# Redirect log messages to a log file, support file rolling.
+log4j.appender.file=org.apache.log4j.RollingFileAppender
+log4j.appender.file.File=c:\\log4j-application.log
+log4j.appender.file.MaxFileSize=1MB
+log4j.appender.file.MaxBackupIndex=2
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+
+final static Logger logger = Logger.getLogger(Log4JCoreJavaSample.class);
+
+4.	
+@ConditionalOnProperty(prefix = "spring", name = "asy.library.type", havingValue = "rest", matchIfMissing = true)
+public class LibRestClientAutoConfiguration {
+
+    	
+    	
+    	
+    	
+    	

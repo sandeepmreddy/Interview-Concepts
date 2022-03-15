@@ -1,0 +1,576 @@
+ZAhttps://github.com/sudheerj/angular-interview-questions
+
+1.tsconfig.json	The base TypeScript configuration for projects in the workspace. 
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+	]}
+	]
+2.package.json --All dependecies with versions
+3.angular.json	CLI configuration defaults for all projects in the workspace, including configuration options for build, serve, and test tools that the CLI uses, such as Karma.	
+4.main.ts. This file acts as the entry point of the application. This entry point is defined in the internals of webpack that is used by Angular to support the modular functionality.
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+
+1. What is Angular?
+A)
+Angular is an open source java script framework
+It is completely written in Type Script
+It is aimed to devlop single page applications(SPA)
+2.What is Type Script?
+A)Type script is superset of java script and offers excellent consistency
+Type script can be installed with NPM package
+npm install -g typescript
+3.Data Binding--> Two way data binding
+Model-><-View
+
+Interpolation Property--> from  Component to view
+
+{{expression}}
+[target]="expression"
+
+Event binding --> from view to Component
+(target)="statement"
+One-way
+
+to data source
+Two-way	
+
+[(target)]="expression"
+Two-way
+4.SPA-->Single page application-->New HTML page are not loaded to display the new page's content,instead generated dynamically.
+5. Angular JS vs Angular
+a)Language:java script vs type script
+b)Architecture:MVC vs user components and directives
+c)No mobile support vs mobile support
+d)does not support dependency injection vs support dependency injection
+e)@routerProvider is to provide routing information vs @Route configuration is used to define routing configuration
+f)Management : Difficult to manage with an increase in source code size vs 
+Better Structured,easy to create and manage bigger applications.
+6. What are decorators in Angular?
+Decoractors are functions that allow a service, directive or filter to be modified prior to its usage
+Angular supports 4 types of decoraters
+1.Class decorators, e.g. @Component and @NgModule2.Property decorators for properties inside classes, e.g. @Input and @Output
+3.Method decorators for methods inside classes, e.g. @HostListener
+4.Parameter decorators for parameters inside class constructors, e.g. @Inject
+7Q. Angular Adantages
+Custom componenets,data Binding,Dependency injection
+9.Templates for Html code
+Template URL and Template:'<div></div>
+9.1: Directive:
+Directives are classes that add additional behavior to elements in your Angular applications.
+10.Component Directives: Component directives are used in main class. They contain the detail of how the component should be processed, instantiated and used at runtime.
+
+Structural Directives: Structural directives start with a * sign. These directives are used to manipulate and change the structure of the DOM elements. For example, *ngIf directive, *ngSwitch directive, and *ngFor directive.
+
+Attribute Directives: Attribute directives are used to change the look and behavior of the DOM elements. For example: ngClass directive, and ngStyle directive etc.
+
+ngClass Directive: The ngClass directive is used to add or remove CSS classes to an HTML element.
+ngStyle Directive: The ngStyle directive facilitates you to modify the style of an HTML element using the expression. You can also use ngStyle directive to dynamically change the style of your HTML element.
+11.AOT compilation : Ahead of time compilation converts html and type script code into java script during the build phase,i.e.before browser downloads and runs the code
+Some advantages
+------------------
+Fatser rendering
+Fewer Asynchronous requests
+smaller angular framework download size
+Quick detection of template errors
+Better security
+13.@Component,it starts with app component
+14. Pipes are simple functions designed to accept an input value,process,and return an input value
+ Pipes are defined using the | pipe symbol
+<p>The hero's birthday is {{ birthday | date:"MM/dd/yy" }} </p>
+ 15 Pure and impure pipes? 
+1.A pure pipe is only called when Angular detects a change in the value or the parameters passed to a pipe.
+2. An impure pipe is called for every change detection cycle no matter whether the value or parameter(s) changes.
+ 16.PipeTransForm- Takes input and transforms into desired object
+ @Pipe({name: 'downFilterPipe'})
+ export class DownFilterPipe implements PipeTransform {
+    transform(items, filter): any {
+        if (filter && Array.isArray(items)) {
+            return items.filter(item => {
+                filter = filter.toLowerCase();
+                item = item.toLowerCase();
+                return item.indexOf(filter) > -1
+            })
+        } else {
+            return items;
+        }
+    }
+}
+
+<p>
+       {{list | downFilterPipe: items}}
+    </p>
+	
+17.@NgModule
+
+// @NgModule decorator with its metadata
+@NgModule({
+  declarations: [AppComponent],//All componenets
+  imports: [BrowserModule], //All core and other modules
+  providers: [],//Services and Factory
+  bootstrap: [AppComponent]
+})
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+19.AngularJS provides filters to transform data:
+
+currency Format a number to a currency format.
+date Format a date to a specified format.
+filter Select a subset of items from an array.
+json Format an object to a JSON string.
+limitTo Limits an array/string, into a specified number of elements/characters.
+lowercase Format a string to lower case.
+number Format a number to a string.
+orderBy Orders an array by an expression.
+uppercase Format a string to upper case.
+
+20. View encapsultion in Angular?
+
+21.Scope in Angular?
+
+23. Component life cycle hooks?
+Constructor()
+1.ngOnit
+2.ngOnChanges
+3.ngDestroy
+
+24. String interpolation in Angular?
+{{name}} -- Data comes from Component to view i.e One way data binding
+
+25.Template Statement Ex: Calling the button click event calls the component method.
+
+26. JIT VS AOT
+
+JIT	AOT
+JIT downloads the compiler and compiles code exactly before Displaying in the browser.	AOT has already complied with the code while building your application, so it doesn’t have to compile at runtime.
+Loading in JIT is slower than the AOT because it needs to compile your application at runtime.	
+Loading in AOT is much quicker than the JIT because it already has compiled your code at build time.
+JIT is more suitable for development mode.	AOT is much suitable in the case of Production mode.
+Bundle size is higher compare to AOT.	Bundle size optimized in AOT, in results AOT bundle size is half the size of JIT bundles.
+You can run your app in JIT with this command: ng build OR ng serve
+To run your app in AOT you have to provide –aot at the end like:ng build --aot OR ng serve --aot  
+JIT : You can catch template binding error at display time.	
+AOT : You can catch the template error at building your application.
+
+27. import { Component } from "@angular/core";  
+  
+//decorator  and metadata
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+  
+export class AppComponent {  
+    name: string = "Angular 2"  
+}
+
+31. OnInit is called when the component created.And it takes no parameter and returns void.
+
+// import OnInit
+import {Component, OnInit} from '@angular/core';
+...
+@Component({
+	...
+})
+// implementing OnInit
+export class AppComponent implements OnInit {
+  
+  constructor() {
+     // constructor called first time before the ngOnInit()
+  }
+  ngOnInit() {
+     // called after the constructor and called  after the first ngOnChanges() 
+  }
+  
+}
+
+32. https://www.pluralsight.com/guides/difference-between-template-driven-and-reactive-forms-angular
+33. Bootstrap loading?
+34. Eager and Lazy loading-->same like spring
+35.Angular has Regular DOM with tree structure of HTML tags
+36. Dependency example ng g service HeroService
+Dependencies from external sources.
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class HeroService {
+  constructor() { }
+}
+
+39. Angular uses jasmine to run various tests.
+karma is a task runner for various tests.
+40. it has dependencies and dev dependencies.
+
+Component life cycle hooks
+1. ngOnit intitalized once after the constructor called
+parent constructor called
+child constructor called
+parent ngOnit called
+child ngOnit called
+2.ngOnDestroy() -- will remove the component
+3. ngonchanges called before ngOnit. This is called when the value passed/changed from parent to child.
+ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+  }
+4.ngDoCheck() will be called after ngonchanges()
+5.ngAfterContentInit() --This will called after ngDoCheck and only once 
+<ng-cotent></ng-contennt> project content should be writeen in the ngAfterContentInit
+@ContentChild() -- The projected content will be fetched. 
+6.ngAfterContentChecked()--This will called after ngAfterContentInit and ngDoCheck
+7.ngAfterViewInit() --This will called after ngAfterContentChecked
+@ViewChild
+8.ngAfterViewChecked--This will called after ngAfterViewInit and ngAfterContentChecked
+
+Q)Pure and impure pipes
+impure : pure:false bring the data immediatly
+A pure pipe is only called when Angular detects a change in the value or the parameters passed to a pipe.An impure pipe is called for every change detection cycle no matter whether the value or parameter(s) changes
+Test cases execution
+@ContentChild and @ViewChild
+Custom pipes 
+
+export class FetchJsonPipe implements PipeTransform {
+  private cachedData: any = null;
+  private cachedUrl = '';
+
+  constructor(private http: HttpClient) { }
+
+  transform(url: string): any {
+    if (url !== this.cachedUrl) {
+      this.cachedData = null;
+      this.cachedUrl = url;
+      this.http.get(url).subscribe(result => this.cachedData = result);
+    }
+
+    return this.cachedData;
+  }
+}
+
+
+Observables	Promises
+Emit multiple values over a period of time.	Emit a single value at a time.
+Are lazy: they’re not executed until we subscribe to them using the subscribe() method.	Are not lazy: execute immediately after creation.
+Have subscriptions that are cancellable using the unsubscribe() method, which stops the listener from receiving further values.	Are not cancellable.
+Provide the map for forEach, filter, reduce, retry, and retryWhen operators.	Don’t provide any operations.
+Deliver errors to the subscribers.	Push errors to the child promises.
+
+https://www.syncfusion.com/blogs/post/angular-promises-versus-observables.aspx
+
+Root Guards :
+https://stackoverflow.com/questions/50485433/how-to-use-angular-6-route-auth-guards-for-all-routes-root-and-child-routes
+
+@Injectable()
+export class AuthGuard implements CanActivate {
+  constructor(private auth: AuthService,
+    private myRoute: Router){
+  }
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    if(this.auth.isLoggedIn()){
+      return true;
+    }else{
+      this.myRoute.navigate(["login"]);
+      return false;
+    }
+  }
+}
+
+
+scss vs css
+SASS (Syntactically Awesome Style Sheets) is a pre-processor scripting language that will be compiled or interpreted into CSS. SassScript is itself a scripting language whereas SCSS is the main syntax for the SASS which builds on top of the existing CSS syntax. It makes use of semicolons and brackets like CSS (Cascaded Style Sheets).
+
+Zone.JS
+-----------
+Zone.js is the key to Angular's change detection.
+
+ngZone,ChangeDectionRef
+
+Zone creates a wrapper around all asynchronous operations in the browser such as user interactions, HTTP, timers and any other changes that can cause changes in state.
+
+Zone knows when any these operations completes. Angular in-turn, subscribes to notifications from Zone for whenever one of these operations completes. This lets Angular know that it can run its change detection algorithms and re-render anything that has changed.
+
+This minimizes any rendering churn and makes it efficient.
+
+ReactiveFormsModule Vs Template Driven Form
+1. Template Driven Form - Created in directivies, UnStructured,ASynchronous,Directives, Mutable.
+2. ReactiveFormsModule - Created in Componet class,Structured,Synchronous,Functions, Immutable.
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [
+    // other imports ...
+    ReactiveFormsModule
+  ],
+})
+export class AppModule { }
+
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'app-name-editor',
+  templateUrl: './name-editor.component.html',
+  styleUrls: ['./name-editor.component.css']
+})
+export class NameEditorComponent {
+  name = new FormControl('');
+}
+
+<label for="name">Name: </label>
+<input id="name" type="text" [formControl]="name">
+
+1. Root component in angular is AppComponent.
+2. Debounce time?
+debounceTime(1000);
+
+   initSelectDebouncer() {
+        this.selectDebouncer.pipe(debounceTime(300))
+            .subscribe((event) => {
+                this.onChange.emit(this.selectedItemList);
+            });
+    }
+
+The debounce function delays the processing of the action until the user has stopped re-executing the same event or action. Debouncing can be used in the search event or any user event where the user can give a continuous input but the needed result should be with respect to the final input.
+
+50.What is a bootstrapping module?
+Every application has at least one Angular module, the root module that you bootstrap to launch the application is called as bootstrapping module. It is commonly known as AppModule. The default structure of AppModule generated by AngularCLI would be as follows
+
+/* JavaScript imports */
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppComponent } from './app.component';
+
+/* the AppModule class with the @NgModule decorator */
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+50.1.What is a bootstrapped component?
+A bootstrapped component is an entry component that Angular loads into the DOM during the bootstrap process or application launch time. Generally, this bootstrapped or root component is named as AppComponent in your root module using bootstrap property as below.
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent] // bootstrapped entry component need to be declared here
+})
+
+
+51.How do you perform Error handling?
+
+
+fetchUser() {
+  this.userService.getProfile()
+    .subscribe(
+      (data: User) => this.userProfile = { ...data }, // success path
+      error => this.error = error // error path
+    );
+}
+```
+52. What are macros?
+The AOT compiler supports macros in the form of functions or static methods that return an expression in a single return expression. For example, let us take a below macro function,
+
+export function wrapInArray<T>(value: T): T[] {
+  return [value];
+}
+
+53. what is an rxjs subject in Angular
+An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), Subjects are multicast.
+
+A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners.
+
+ import { Subject } from 'rxjs';
+
+   const subject = new Subject<number>();
+
+   subject.subscribe({
+     next: (v) => console.log(`observerA: ${v}`)
+   });
+   subject.subscribe({
+     next: (v) => console.log(`observerB: ${v}`)
+   });
+
+   subject.next(1);
+   subject.next(2);
+   
+54.What is DOM sanitizer?
+DomSanitizer is used to help preventing Cross Site Scripting Security bugs (XSS) by sanitizing values to be safe to use in the different DOM contexts.
+55.What are the applications of HTTP interceptors?
+The HTTP Interceptors can be used for different variety of tasks,
+
+Authentication
+Logging
+Caching
+Fake backend
+URL transformation
+Modifying headers
+
+
+56.How can I use interceptor for an entire application?
+You can use same instance of HttpInterceptors for the entire app by importing the HttpClientModule only in your AppModule, and add the interceptors to the root application injector. For example, let's define a class that is injectable in root application.
+
+@Injectable()
+export class MyInterceptor implements HttpInterceptor {
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+
+    return next.handle(req).do(event => {
+      if (eventt instanceof HttpResponse) {
+           // Code goes here
+      }
+    });
+
+  }
+}
+After that import HttpClientModule in AppModule
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, HttpClientModule],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: MyInterceptor, multi: true }
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+
+57. What is the purpose of ngFor trackBy?
+The main purpose of using *ngFor with trackBy option is performance optimization. Normally if you use NgFor with large data sets, a small change to one item by removing or adding an item, can trigger a cascade of DOM manipulations. In this case, Angular sees only a fresh list of new object references and to replace the old DOM elements with all new DOM elements. You can help Angular to track which items added or removed by providing a trackBy function which takes the index and the current item as arguments and needs to return the unique identifier for this item.
+
+For example, lets set trackBy to the trackByTodos() method
+
+<div *ngFor="let todo of todos; trackBy: trackByTodos">
+  ({{todo.id}}) {{todo.name}}
+</div>
+and define the trackByTodos method,
+
+trackByTodos(index: number, item: Todo): number { return todo.id; }
+
+58.What is the precedence between pipe and ternary operators?
+The pipe operator has a higher precedence than the ternary operator (?:). For example, the expression first ? second : third | fourth is parsed as first ? second : (third | fourth).
+
+
+60.What is Angular compiler?
+The Angular compiler is used to convert the application code into JavaScript code. 
+
+61.What is the role of ngModule metadata in compilation process?
+The @NgModule metadata is used to tell the Angular compiler what components to be compiled for this module and how to link this module with other modules.
+
+62.Angular libraries such as FormsModule, HttpClientModule, and RouterModule are NgModules.
+
+63.How do you restrict provider scope to a module?
+It is possible to restrict service provider scope to a specific module instead making available to entire application. There are two possible ways to do it.
+
+Using providedIn in service:
+import { Injectable } from '@angular/core';
+import { SomeModule } from './some.module';
+
+@Injectable({
+  providedIn: SomeModule,
+})
+export class SomeService {
+}
+
+Declare provider for the service in module:
+import { NgModule } from '@angular/core';
+
+import { SomeService } from './some.service';
+
+@NgModule({
+  providers: [SomeService],
+})
+export class SomeModule {
+}
+
+64.How does forRoot method helpful to avoid duplicate router instances?
+If the RouterModule module didn’t have forRoot() static method then each feature module would instantiate a new Router instance, which leads to broken application due to duplicate instances. After using forRoot() method, the root application module imports RouterModule.forRoot(...) and gets a Router, and all feature modules import RouterModule.forChild(...) which does not instantiate another Router.
+
+65.Can I share services using modules?
+No, it is not recommended to share services by importing module. i.e Import modules when you want to use directives, pipes, and components only. The best approach to get a hold of shared services is through 'Angular dependency injection' because importing a module will result in a new service instance.
+
+66.Bootstrap Angular with noop zone in src/main.ts.Asynchronous doesn’t work.
+platformBrowserDynamic().bootstrapModule(AppModule, {ngZone: 'noop'})
+  .catch(err => console.error(err));
+  
+67.What are the methods of NgZone used to control change detection?
+NgZone service provides a run() method that allows you to execute a function inside the angular zone. This function is used to execute third party APIs which are not handled by Zone and trigger change detection automatically at the correct time.
+
+export class AppComponent implements OnInit {
+  constructor(private ngZone: NgZone) {}
+  ngOnInit() {
+    // use ngZone.run() to make the asynchronous operation in the angular zone
+    this.ngZone.run(() => {
+      someNewAsyncAPI(() => {
+        // update the data of the component
+      });
+    });
+  }
+}
+Whereas runOutsideAngular() method is used when you don't want to trigger change detection.
+
+export class AppComponent implements OnInit {
+  constructor(private ngZone: NgZone) {}
+  ngOnInit() {
+    // Use this method when you know no data will be updated
+    this.ngZone.runOutsideAngular(() => {
+      setTimeout(() => {
+        // update component data and don't trigger change detection
+      });
+    });
+  }
+}
+
+68. What is an optional dependency?
+The optional dependency is a parameter decorator to be used on constructor parameters, which marks the parameter as being an optional dependency. Due to this, the DI framework provides null if the dependency is not found. For example, If you don't register a logger provider anywhere, the injector sets the value of logger(or logger service) to null in the below class.
+
+import { Optional } from '@angular/core';
+
+constructor(@Optional() private logger?: Logger) {
+  if (this.logger) {
+    this.logger.log('This is an optional dependency message');
+  } else {
+    console.log('The logger is not registered');
+  }
+}
+
+69.What are the types of injector hierarchies?
+There are two types of injector hierarchies in Angular
+
+ModuleInjector hierarchy: It configure on a module level using an @NgModule() or @Injectable() annotation.
+ElementInjector hierarchy: It created implicitly at each DOM element. Also it is empty by default unless you configure it in the providers property on @Directive() or @Component().

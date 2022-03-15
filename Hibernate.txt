@@ -1,0 +1,65 @@
+1. What are the advantages 1, Advantages of Hibernate over JDBC?
+A)ORM mapping
+Since we use Hibernate Query Language, we don't write db specfic quries
+easily can switch theDB
+2. what is session in hibernate?
+
+persist(), load(), get(), update(), delete(), etc.
+
+3. What do you think about the statement - “session being a thread-safe object”?
+No, Session is not a thread-safe object which means that any number of threads can access data from it simultaneously.
+
+4. What is the difference between first level cache and second level cache?
+Hibernate has 2 cache types. First level and second level cache for which the difference is given below:
+
+First Level Cache	Second Level Cache
+This is local to the Session object and cannot be shared between multiple sessions.	
+This cache is maintained at the SessionFactory level and shared among all sessions in Hibernate.
+This cache is enabled by default and there is no way to disable it.	
+This is disabled by default, but we can enable it through configuration.
+The first level cache is available only until the session is open, once the session is closed, the first level cache is destroyed.	
+The second-level cache is available through the application’s life cycle, it is only destroyed and recreated when an application is restarted.
+
+If an entity or object is loaded by calling the get() method then Hibernate first checked the first level cache, 
+if it doesn’t find the object then it goes to the second level cache if configured. 
+If the object is not found then it finally goes to the database and returns the object, 
+if there is no corresponding row in the table then it returns null.
+
+5. What can you tell about Hibernate Configuration File?
+Hibernate facilitates providing the configuration either in an XML file (like hibernate.cfg.xml) or a properties file (like hibernate.properties).
+
+This file is used to define the below information:
+
+Database connection details: Driver class, URL, username, and password.
+There must be one configuration file for each database used in the application, suppose if we want to connect with 2 databases, then we must create 2 configuration files with different names.
+Hibernate properties: Dialect, show_sql, second_level_cache, and mapping file names.
+
+6. How do you create an immutable class in hibernate?
+Immutable class in hibernate creation could be in the following way. If we are using the XML form of configuration, then a class can be made immutable by markingmutable=false. The default value is true there which indicating that the class was not created by default.
+
+In the case of using annotations, immutable classes in hibernate can also be created by using @Immutable annotation.
+
+7. Differentiate between save() and saveOrUpdate() methods in hibernate session.
+Both the methods save records to the table in the database in case there are no records with the primary key in the table. However, the main differences between these two are listed below:
+
+save()	saveOrUpdate()
+save() generates a new identifier and INSERT record into a database	Session.saveOrUpdate() can either INSERT or UPDATE based upon existence of a record.
+The insertion fails if the primary key already exists in the table.	In case the primary key already exists, then the record is updated.
+The return type is Serializable which is the newly generated identifier id value as a Serializable object.	The return type of the saveOrUpdate() method is void.
+This method is used to bring only a transient object to a persistent state.	This method can bring both transient (new) and detached (existing) objects into a persistent state. It is often used to re-attach a detached object into a Session
+Clearly, saveOrUpdate() is more flexible in terms of use but it involves extra processing to find out whether a record already exists in the table or not.
+
+8. Differentiate between get() and load() in Hibernate session
+These are the methods to get data from the database. The primary differences between get and load in Hibernate are given below:
+
+get()	load()
+This method gets the data from the database as soon as it is called.	This method returns a proxy object and loads the data only when it is required.
+The database is hit every time the method is called.	The database is hit only when it is really needed and this is called Lazy Loading which makes the method better.
+The method returns null if the object is not found.	The method throws ObjectNotFoundException if the object is not found.
+This method should be used if we are unsure about the existence of data in the database.	This method is to be used when we know for sure that the data is present in the database.
+
+9. JPA Query
+@Modifying
+@Query("update User u set u.status = :status where u.name = :name")
+int updateUserSetStatusForName(@Param("status") Integer status, 
+  @Param("name") String name);

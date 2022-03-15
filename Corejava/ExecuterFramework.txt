@@ -1,0 +1,72 @@
+ Future<String> result;
+ List<ReportTask> tasks = getReportTasks();
+        ExecutorService processExecutor = Executors.newFixedThreadPool(NUM_COMPOSITION_THREADS);
+        tasks.forEach(task -> {
+            
+            result = processExecutor.submit(task);
+        });
+		
+		final Map<String, InputStream> entryMap = result.get();
+		
+		 processExecutor.shutdown();
+		 
+ List<ReportTask> getReportTasks()
+ {
+    List<ReportTask> tasks = new ArrayList<ReportTask>();
+	tasks.add(new Task1());
+	tasks.add(new Task2());
+	return tasks; 
+ }
+		
+class Task1 implements Callable<String> {
+}
+
+class Task2 implements Callable<String> {
+}
+
+Sr. No.	Key	Runnable	Callable
+1
+Package
+It belongs to Java.lang
+It belongs to java.util.concurrent
+2
+Thread Creation
+We can create thread by passing runnable as a parameter.
+We can’t create thread by passing callable as parameter  
+3
+Return Type
+Ruunable does not return anything
+Callable can return results
+4.
+Method
+It has run() method
+It has call()method
+5
+Bulk Execution
+It can’t be used for bulk execution of task
+It can be used for bulk execution of task by invoking invokeAll().
+
+18.Executor framework
+Class1 :
+
+		Task task = new tset1.Task("GeeksForGeeks");
+
+        // Creating object of ExecutorService class and
+        // Future object Class
+        ExecutorService executorService
+                = Executors.newFixedThreadPool(4);
+        Future<String> result
+                = executorService.submit(task);
+
+        // Try block to check for exceptions
+        try {
+            System.out.println(result.get());
+        }
+		
+Class2 : Task
+	
+	// Method of this Class
+public String call() throws Exception
+{
+	return "Hiiii " + message + "!";
+}

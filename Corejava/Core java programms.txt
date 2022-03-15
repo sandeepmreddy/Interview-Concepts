@@ -1,0 +1,76 @@
+1. Reverse String
+
+public class FinalReverseWithoutUsingInbuiltFunction {
+    public static void main(String[] args) {
+        String str = "Saket Saurav";
+        char chars[] = str.toCharArray();  // converted to character array and printed in reverse order
+        for(int i= chars.length-1; i>0; i--) {
+            System.out.print(chars[i]);
+        }
+    }
+}
+
+2. Counting words in string
+
+import java.util.HashMap;
+ 
+public class FinalCountWords {
+ 
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        String str = "This this is is done by Saket Saket";
+        String[] split = str.split(" ");
+         
+                HashMap<String,Integer> map = new HashMap<String,Integer>();
+        for (int i=0; i<split.length; i++) {
+            if (map.containsKey(split[i])) {
+                int count = map.get(split[i]);
+                map.put(split[i], count+1);
+            }
+            else {
+                map.put(split[i], 1);
+            }
+        }
+        System.out.println(map);
+    }
+ 
+}
+
+3. public class DuplicateCharacters {
+          
+          public static void main(String[] args) {
+                   // TODO Auto-generated method stub
+                  String str = new String("Sakkett");
+                  int count = 0;
+                  char[] chars = str.toCharArray();
+                  System.out.println("Duplicate characters are:");
+                  for (int i=0; i&lt;str.length();i++) {
+                              for(int j=i+1; j<str.length();j++) {
+                                         if (chars[i] == chars[j]) {
+                                                    System.out.println(chars[j]);
+                                                    count++;
+                                                    break;
+                                          }
+                               }
+                   }
+           }
+ 
+}
+
+4. Fibonacci Series in Java without using recursion
+
+class FibonacciExample1{  
+public static void main(String args[])  
+{    
+ int n1=0,n2=1,n3,i,count=10;    
+ System.out.print(n1+" "+n2);//printing 0 and 1    
+    
+ for(i=2;i<count;++i)//loop starts from 2 because 0 and 1 are already printed    
+ {    
+  n3=n1+n2;    
+  System.out.print(" "+n3);    
+  n1=n2;    
+  n2=n3;    
+ }    
+  
+}}  

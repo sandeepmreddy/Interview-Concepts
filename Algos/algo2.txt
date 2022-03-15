@@ -1,0 +1,43 @@
+10->10->20->20->20->30->30->30->30->30->30
+
+k=1 Output 10 20 20 30 30
+
+k= 2 Output 10 20 20 20 30 30 30
+
+k=4 10->20->20->20->30->30->30->30
+
+
+
+public Node removeRepetiotions(Node head, int k) k=1
+{
+10
+Node temp =head;
+while(temp!=null)
+{
+int couter =-1;
+
+if(temp.data!=null && temp.data == temp.next.data)
+{
+counter=count+1;
+conuter =0 k=1
+
+
+  if(counter>k)
+  {
+	temp.next=temp.next.next;
+	
+  }
+}else
+{
+counter=0;
+}
+
+
+
+)
+
+
+
+
+return temp;
+}

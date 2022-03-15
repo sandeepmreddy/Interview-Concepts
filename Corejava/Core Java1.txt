@@ -1,0 +1,219 @@
+1. What do you mean by data encapsulation?
+Data Encapsulation is an Object-Oriented Programming concept of hiding the data attributes and their behaviors in a single unit.
+It helps developers to follow modularity while developing software by ensuring that each 
+object is independent of other objects by having its own methods, attributes, and functionalities.
+2. Tell us something about JIT compiler.
+JIT stands for Just-In-Time and it is used for improving the performance during run time. 
+It does the task of compiling parts of byte code having similar functionality at the same time 
+thereby reducing the amount of compilation time for the code to run.
+JIT: Source code -->.class(Byte)
+Interpreter : Byte-->Machine
+3.0
+Class loaders
+BootStrap --Rt.jar
+external loader -- jvm -It loads files from jre/lib/ext directory or any other directory pointed by the system property java.ext.dirs.
+application loader --user application classes(CLASSPATH, -classpath or -cp command line option)
+3.JVM Memory 
+
+Method area: In the method area, all class level information like class name, immediate parent class name, methods and variables information etc. are stored, including static variables. There is only one method area per JVM, and it is a shared resource.
+Heap area: Information of all objects is stored in the heap area. There is also one Heap Area per JVM. It is also a shared resource.
+Stack area: For every thread, JVM creates one run-time stack which is stored here. Every block of this stack is called activation record/stack frame which stores methods calls. All local variables of that method are stored in their corresponding frame. After a thread terminates, its run-time stack will be destroyed by JVM. It is not a shared resource.
+PC Registers: Store address of current execution instruction of a thread. Obviously, each thread has separate PC Registers.
+Native method stacks: For every thread, a separate native stack is created. It stores native method information. 
+
+4. Explain the use of final keyword in variable, method and class.
+In Java, the final keyword is used as defining something as constant /final and represents the non-access modifier.
+
+final variable:
+When a variable is declared as final in Java, the value can’t be modified once it has been assigned.
+If any value has not been assigned to that variable, then it can be assigned only by the constructor of the class.
+final method:
+A method declared as final cannot be overridden by its children's classes.
+A constructor cannot be marked as final because whenever a class is inherited, the constructors are not inherited. 
+Hence, marking it final doesn't make sense. Java throws compilation error saying - modifier final not allowed here
+final class:
+No classes can be inherited from the class declared as final. 
+But that final class can extend other classes for its usage.
+
+5.Finalize: Prior to the garbage collection of an object, the finalize method is called 
+so that the clean-up activity is implemented. Example:
+
+public static void main(String[] args) {
+String example = new String("InterviewBit");
+example = null;
+System.gc(); // Garbage collector called
+}
+public void finalize() {
+// Finalize called
+}
+
+6. finally wlll not be called when the system.exit(),Systecrash
+
+6. Apart from the security aspect, what are the reasons behind making strings immutable in Java?
+A String is made immutable due to the following reasons:
+
+String Pool: Designers of Java were aware of the fact that String data type is going 
+to be majorly used by the programmers and developers. Thus, they wanted optimization from the beginning.
+ They came up with the notion of using the String pool (a storage area in Java heap) 
+ to store the String literals. They intended to decrease the temporary 
+ String object with the help of sharing. An immutable class is needed to facilitate sharing. 
+ The sharing of the mutable structures between two unknown parties is not possible. 
+ Thus, immutable Java String helps in executing the concept of String Pool.
+
+Multithreading: The safety of threads regarding the String objects is an important aspect in Java. 
+No external synchronization is required if the String objects are immutable. Thus, a cleaner code 
+can be written for sharing the String objects across different threads. The complex process 
+of concurrency is facilitated by this method.
+
+Collections: In the case of Hashtables and HashMaps, keys are String objects. If the String objects 
+are not immutable, then it can get modified during the period when it resides in the HashMaps. 
+Consequently, the retrieval of the desired data is not possible. Such changing states pose a lot of risks.
+ Therefore, it is quite safe to make the string immutable.
+ 
+ String VS String Buffer VS String Builder
+7. Storage area: In string, the String pool serves as the storage area.
+ For StringBuilder and StringBuffer, heap memory is the storage area.
+Mutability: A String is immutable, whereas both the StringBuilder and StringBuffer are mutable.
+Efficiency: It is quite slow to work with a String. However, StringBuilder is the fastest in performing operations. The speed of a StringBuffer is more than a String and less than a StringBuilder. (For example appending a character is fastest in StringBuilder and very slow in String because a new  [[ is required for the new String with appended character.)
+Thread-safe: In the case of a threaded environment, StringBuilder and StringBuffer are used whereas a String is not used. However, StringBuilder is suitable for an environment with a single thread, and a StringBuffer is suitable for multiple threads.
+Syntax:
+// String
+String first = "InterviewBit";
+String second = new String("InterviewBit");
+// StringBuffer
+StringBuffer third = new StringBuffer("InterviewBit");
+// StringBuilder
+StringBuilder fourth = new StringBuilder("InterviewBit");
+
+8. What makes a HashSet different from a TreeSet?
+Although both HashSet and TreeSet are not synchronized and ensure that duplicates are not present, there are certain properties that distinguish a HashSet from a TreeSet.
+
+Implementation: For a HashSet, the hash table is utilized for storing the elements in an unordered manner. However, TreeSet makes use of the red-black tree to store the elements in a sorted manner.
+
+Complexity/ Performance: For adding, retrieving, and deleting elements, the time amortized complexity is O(1) for a HashSet. The time complexity for performing the same operations is a bit higher for TreeSet and is equal to O(log n). Overall, the performance of HashSet is faster in comparison to TreeSet.
+
+Methods: hashCode() and equals() are the methods utilized by HashSet for making comparisons between the objects. Conversely, compareTo() and compare() methods are utilized by TreeSet to facilitate object comparisons.
+
+Objects type: Heterogeneous and null objects can be stored with the help of HashSet. In the case of a TreeSet, runtime exception occurs while inserting heterogeneous objects or null objects.
+
+In heterogeneous collection, you can add any type of data into collection for example,
+
+HashSet a = new HashSet();
+a.add(1); // integer 
+a.add("any string"); // any string 
+a.add(new { any = "Test Data" }); //any object
+
+ArrayList is implemented as a resizable array. As more elements are added to ArrayList, its size is increased dynamically. It's elements can be accessed directly by using the get  methods, since ArrayList is essentially an array.
+
+LinkedList is implemented as a double linked list. Its performance on add and remove is better than Arraylist, but worse on get and set methods.
+
+Vector is similar with ArrayList, but it is synchronized.
+
+9.Summary	
+JDK = (JRE) + Development tools	
+JRE = (JVM) + Libraries to execute the application	
+JVM = The Java Virtual Machine (JVM) is the runtime engine of the Java Platform, which allows any program written in Java or other language compiled into Java bytecode to run on any computer that has a native JVM.
+
+10. What are the differences between HashMap and HashTable in Java?
+HashMap	HashTable
+HashMap is not synchronized thereby making it better for non-threaded applications.	HashTable is synchronized and hence it is suitable for threaded applications.
+Allows only one null key but any number of null in the values.	This does not allow null in both keys or values.
+Supports order of insertion by making use of its subclass LinkedHashMap.
+
+11. What is the importance of reflection in Java?
+
+You can call private methods from java
+Reflection mainly for Debugging tools Intellij,Eclipse
+
+Method methodOfFoo = fooObject.getClass().getMethod("fooBar", null);
+methodOfFoo.invoke(fooObject, null);
+
+Number of ways to craete reflection:
+Class c=Class.forName("Simple");  
+Test t=c.newInstance();
+t.privateMethod();
+Class c=obj.getClass();   
+ Class c2 = Test.class;  
+ 
+
+13. What are the different ways of threads usage?
+We can define and implement a thread in java using two ways:
+Extending the Thread class
+class InterviewBitThreadExample extends Thread{  
+   public void run(){  
+       System.out.println("Thread runs...");  
+   }  
+   public static void main(String args[]){  
+       InterviewBitThreadExample ib = new InterviewBitThreadExample();  
+       ib.start();  
+   }  
+}
+Implementing the Runnable interface
+class InterviewBitThreadExample implements Runnable{  
+   public void run(){  
+       System.out.println("Thread runs...");  
+   }  
+   public static void main(String args[]){  
+       Thread ib = new Thread(new InterviewBitThreadExample()); 
+       ib.start();  
+   }  
+}
+Implementing a thread using the method of Runnable interface is more preferred and advantageous as Java does not have support for multiple inheritances of classes.
+start() method is used for creating a separate call stack for the thread execution. Once the call stack is created, JVM calls the run() method for executing the thread in that call stack.
+
+14.  Java works as “pass by value” .The address of the heap memory location.
+
+15. How to not allow serialization of attributes of a class in Java?
+In order to achieve this, the attribute can be declared along with the usage of transient keyword as shown below:
+public class InterviewBitExample { 
+
+   private transient String someInfo; 
+   private String name;
+   private int id;
+   // :
+   // Getters setters
+   // :
+} 
+In the above example, all the fields except someInfo can be serialized.
+16. What happens if the static modifier is not included in the main method signature in Java?
+There wouldn't be any compilation error. But when the program is run, 
+
+since the JVM cant map the main method signature, 
+the code throws “NoSuchMethodError” error at the runtime
+
+17. What do you understand by Object Cloning and how do you achieve it in Java?
+It is the process of creating an exact copy of any object. In order to support this, a java class has to implement the Cloneable interface of java.lang package and override the clone() method provided by the Object class the syntax of which is:
+Class A implenets Cloneable
+protected Object clone() throws CloneNotSupportedException{
+ return (Object)super.clone();
+}
+In case the Cloneable interface is not 
+implemented and just the method is overridden, 
+it results in CloneNotSupportedException in Java.
+
+
+
+19. The contract between equals() and hashCode() is:
+ 1) If two objects are equal, then they must have the same hash code. 
+2) If two objects have the same hash code, they may or may not be equal. 
+
+20.  Deadlock
+thread 1:
+lock(a)
+waiting to aquire on lock(b)
+
+thread2:
+lock(b)
+waiting to aquire on lock(a)
+
+Thrd 1 --- Lock A        - atmpt lock on B -   
+         \                /                   \
+          \              /                     \           
+           \            /                       \         
+            --- Lock A /                         --- wait for lock on B
+
+  Thrd 2--- Lock B         - atmpt lock on A -   
+         \                /                   \
+          \              /                     \           
+           \            /                       \         
+            --- Lock B /                         --- wait for lock on A

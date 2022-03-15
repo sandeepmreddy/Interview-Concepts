@@ -1,0 +1,607 @@
+WellsForgo:
+
+What is reflection Mechanisam in java?
+Exceuctor framework types?
+A)SingleThreadExecutor. This thread pool executor has only a single thread. ...
+FixedThreadPool(n) As the name indicates, it is a thread pool of a fixed number of threads. ...
+CachedThreadPool. This thread pool is mostly used where there are lots of short-lived parallel tasks to be executed.Unlike the fixed thread pool, the number of threads of this executor pool is not bounded.
+ScheduledExecutor.This executor is used when we have a task that needs to be run at regular intervals or if we wish to delay a certain task.
+@resource, @value in springboot?
+A)The @Resource annotation is part of the JSR-250 annotation collection, and is packaged with Jakarta EE. This annotation has the following execution paths, listed by precedence:
+Match by Name
+Match by Type
+Match by Qualifier
+
+We will use the default property file for Spring Boot - application.properties, where we can define variables that we can access afterwards:
+@Value("${value.from.file}")
+private String valueFromFile;
+
+JVM Memory model difference between java5 and java8?
+
+ “java.lang.OutOfMemoryError: PermGen space
+
+if you use -XX:MaxMetaspaceSize it does not throw error “java.lang.OutOfMemoryError
+
+Read and Write locks in threads?
+
+Read Access   	If no threads are writing, and no threads have requested write access.
+Write Access   	If no threads are reading or writing.
+Difference Hashmap and Concurrent Hashmap?
+Concurrent Hashmap lock only on buckets/segments and it fast compare to synchronized map
+case sensitive utility in java8?-Matches()
+Functional Interface in java8?
+A)one abstract method 
+@FunctionalInterface
+interface Square
+{
+    int calculate(int x);
+}
+B) it voilates the FunctionalInterface rule if FunctionalInterface extends another interface
+what is streams intermediate operation and terminal operation in java8?
+What are aggregate operations in java8?
+reduce(),max(),min(),count()	
+What is spring profiles?
+
+application.properties
+
+spring.profiles.active=dev
+
+spring.datasource.driver-class-name= com.mysql.jdbc.Driver
+spring.datasource.username= songs_service_user
+Code language: Properties (properties)
+application-dev.properties
+
+spring.datasource.url= jdbc:mysql://dev_db_host:3306/songsDB
+spring.datasource.password= <password>
+
+https://www.amitph.com/how-to-use-spring-profiles/
+A)@Configuration
+public class DefaultConfigurations {
+    // Skipped Configurations
+}
+
+
+@Configuration
+@Profile("dev")
+public class DevConfigurations {
+    // Skipped Configurations
+}
+
+
+@Configuration
+@Profile("prod")
+public class ProdConfigurations {
+    // Skipped Configurations
+}
+What is stereoType annations?
+dineshonjava.com/stereotype-annotations-in-spring/
+Stereotype annotations are markers for any class that fulfills a role within an application. This helps remove, or at least greatly reduce, the Spring XML configuration required for these components.
+@Component is a generic stereotype for any Spring-managed component. @Repository, @Service, and @Controller are specializations of @Component for more specific use roles/cases, for example, in the persistence, service, and presentation layers, respectively.
+Is is funtional Interface can be extended by another interface?
+yes.. But voilates the single interface rule
+what is Vertical and Horizontal scaling?
+Vertical - 1 Big server
+
+Sticky session -- Session dedicated to cleint and maintains in the pool
+
+Builder pattern real time example -- list.stream().filter().map(..
+This build the complex object
+
+---------------------------------------
+cap:
+
+What is FlatMap in java8?
+Before Flattening: [[1, 2, 3, 4], [7, 8, 9, 0], [5, 6], [12, 18, 19, 20, 17], [22]]
+After Flattening: [1, 2, 3, 4, 7, 8, 9, 0, 5, 6, 12, 18, 19, 20, 17, 22]
+
+What is consumer and producer problem in threads?
+
+A)The producer and consumer problem is one of the small collection of standard, well-known problems in concurrent programming. A finite-size buffer and two classes of threads, producers and consumers, put items into the buffer (producers) and take items out of the buffer (consumers).
+Refer programm in the txt file
+
+If the message is sent but it not deivered and stayed in queue, How you will resolve that issue?
+
+How the asychronous communications is happen between microservices?
+Kafka queues or JMS Queues
+
+What is synchronization and what is serialization?
+can we override the functional Interface?
+yes
+
+For Junit what tools and framework you are using?
+Mockito
+
+In junit when we can use when and then?
+Are you using kafka for message servicing?
+
+coding standars that you are following?
+1.Java Documentation
+2.Comments
+3.Naming Conventation
+4.Formating 
+5.Length of the class and method
+6.Defining Constants to avoid hard coded values
+
+
+What is option class in Java8?
+Optional.ofNullable(answer1).isPresent()
+ Optional.ofNullable(answer1).get()
+ Optional.of(answer2).get()
+
+What is functional Interface?
+
+Functional Interfaces In Java
+A) A functional interface is an interface that contains only one abstract method. They can have only one functionality to exhibit. From Java 8 onwards, lambda expressions can be used to represent the instance of a functional interface. A functional interface can have any number of default and static methods. 
+Runnable, ActionListener, Comparable are some of the examples of functional interfaces. 
+
+Are you aware about jenkins and CI/CD pipeline?
+
+----------------------------------------------
+Altimetrik:
+
+How to do Angular service mocking?
+Mocking A Service in angular Karma Jasmine Testing
+describe("UserDetailComponent", () => {
+  let component: UserDetailComponent;
+  let fixture: ComponentFixture<UserDetailComponent>;
+  const mockUserService = jasmine.createSpyObj("UserSvcService", ["getUserDetail"]);
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [UserDetailComponent],
+      providers: [
+        { provide: UserSvcService, useValue: mockUserService }
+      ]
+    }).compileComponents();
+  }));
+....
+...
+ it('should set some values using service',()=>{
+   mockUserService.getUserDetail.and.returnValue(
+      of({ data: 'somevalue'})
+    );
+   expect(someCondition).toBeDefined();
+ })
+)}
+
+What is optional class? -To aviod the nullPointer Excepions in Java8. What is the method inside that?
+What @valid annotation do? -the @Valid annotation is a key feature of Bean Validation, as it allows to validate object graphs with a single call to the validator. To make use of it all fields that should be recursively checked should be annotated with @Valid.
+
+How to connect to two different databases from Application and How you will configure?
+In the application.yaml/application.properties
+
+What is FunctionInterface?
+Difference between Map and FlatMap in Java8?
+
+How Hashset works internally?
+
+Initially Empty hashMap: Here, the hashmap is size is taken as 16. 
+Indexs are from 0 to 15
+Index = hashcode(Key) & (n-1) 
+Index = 2657860 & (16-1) = 4  
+16 Buckets --In each bucket it has linked lists
+each linked list has {hashcode,key,value,next}
+
+Difference between application.properties and application.yml? why don't we use application.yml insead of application. properties?
+Both are ok .Just your preference
+
+What is te syntax to add database user detailsin application.properties?
+How to restirict the minimum number of request to perticular service(say min 10 requests after that don't allow)How you will achieve?(How do I limit a request rate?)
+Servicetoken will be genarted and we store it temporarily in the cache
+What is difference between parallel stream and sequential stream? How it works internally?
+sequential stream -- one thread will process
+parallel stream -- multiple threads will process on multiple cores.It is un ordered.use forEachOrdered instead offoreach for order.
+stream is ordered.
+program question->get employeeName and empage?
+
+------------------------------------------
+
+caching is used for 80% data is same means we can use cache.
+Hazlecast/GemFire
+
+1. garbage collector alogoritham
+A)Mark live objects and sweep rest of the objects.
+2. amazon search alogritham
+A)At its core, Amazon’s ranking algorithm is similar to Google’s search algorithm. It analyzes search queries for keywords, then tries to match customer desires with relevant products. Every day, Amazon tries to find relevant, informative, and trustworthy content to deliver to its customers. 
+3. lift alogoritham
+A)https://www.youtube.com/watch?v=FptCbX7fRHw
+current requests Treeset-->Keep on processing the requests
+Treeset<Request> currentRequest = new TreeSet();
+upPending requests Treeset-->Keep addingthe to processing  requests
+Treeset<Request> upRequests = new TreeSet();
+downPending requests Treeset-->Keep addingthe to processing  requests
+Treeset<Request> downRequests = new TreeSet();
+while(true)
+{
+if(direction=UP)
+{
+if(currentRequest)
+processRequest-->If there is any in between floors up request,it process first before it process the current request.
+After UP completed, it adds all downPendingRequests if any.
+}
+if(direction=DOWN)
+{
+
+}
+}
+ENUM MOVING, STOPPED and IDLE
+4.CompleteableFuture in spring
+Asynchronus, non blocking and multi threaded code, it won't block the main thread.
+https://www.linkedin.com/pulse/java-8-future-vs-completablefuture-saral-saxena
+But if you do not need the results for further processing (Eg. you just want to insert the results in a Database) a CompletableFuture will have the advantage that you can provide a function that takes the result and does something with it. Eg. like this completableFuture.thenAccept(result -> DB::storeInDB); This way you would not have to wait for the result with get().
+thenSubmit()
+
+
+
+=========================
+0 sprint - First sprint which is scratch
+
+Fail Fast And Fail Safe Iterators in Java
+
+Iterators in java are used to iterate over the Collection objects.Fail-Fast iterators immediately throw ConcurrentModificationException if there is structural modification of the collection. Structural modification means adding, removing any element from collection while a thread is iterating over that collection. Iterator on ArrayList, HashMap classes are some examples of fail-fast Iterator.
+Fail-Safe iterators don’t throw any exceptions if a collection is structurally modified while iterating over it. This is because, they operate on the clone of the collection, not on the original collection and that’s why they are called fail-safe iterators. Iterator on CopyOnWriteArrayList, ConcurrentHashMap classes are examples of fail-safe Iterator.
+
+Difference between Fail Fast Iterator and Fail Safe Iterator
+
+The major difference is fail-safe iterator doesn’t throw any Exception, contrary to fail-fast Iterator.This is because they work on a clone of Collection instead of the original collection and that’s why they are called as the fail-safe iterator.
+
+concurrent modification exception does not happemn itertor.remove()
+
+string buffer(Sync) vs string builder
+
+No.	StringBuffer	StringBuilder
+1)	StringBuffer is synchronized i.e. thread safe. It means two threads can't call the methods of StringBuffer simultaneously.	StringBuilder is non-synchronized i.e. not thread safe. It means two threads can call the methods of StringBuilder simultaneously.
+2)	StringBuffer is less efficient than StringBuilder.	StringBuilder is more efficient than StringBuffer.
+
+
+SELECT state, s_name, total, rank() 
+OVER ( partition by state order by total desc ) 
+AS 'rank' FROM Country;
+
+https://www.javatpoint.com/mysql-ranking-functions
+
+
+
+Singleton pattern
+class A{  
+ private static A obj;  
+ private A(){}  
+   
+ public static A getA(){  
+   if (obj == null){  
+      synchronized(Singleton.class){  
+        if (obj == null){  
+            obj = new Singleton();//instance will be created at request time  
+        }  
+    }              
+    }  
+  return obj;  
+ }  
+  
+ public void doSomething(){  
+ //write your code  
+ }  
+}  
+
+public enum EasySingleton{
+  INSTANCE;
+}
+
+
+select 1 from table---
+SELECT * FROM TABLE1 T1 WHERE EXISTS (
+     SELECT 1 FROM TABLE2 T2 WHERE T1.ID= T2.ID
+ );
+ 
+get duplicate rows from table--
+
+SELECT
+    name, email, COUNT(*)
+FROM
+    users
+GROUP BY
+    name, email
+HAVING
+    COUNT(*) > 1
+
+difference between spring and springboot.
+
+inner join, full join
+what is default methods
+what is static variable
+
+2nd round
+@manytoone, how to join 3 tables in java code
+how to send xml from angular as request and response
+ post() {
+  // Set your HttpHeaders to ask for XML.
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/xml', //<- To SEND XML
+      'Accept':  'application/xml',       //<- To ask for XML
+      'Response-Type': 'text'             //<- b/c Angular understands text
+    })
+  };
+  const postedData = `
+    <userid>1</userid>
+    <title>title here</title>
+    <body>body text</body>`;
+
+  return this.http.post('this url here', postedData, httpOptions)
+    .subscribe(
+      result => { 
+        console.log(result);  //<- XML response is in here *as plain text*
+      }, 
+      error => console.log('There was an error: ', error));
+  }
+
+==============
+what is stream pipelining
+Stream pipelining is the concept of chaining operations together. This is done by splitting the operations that can happen on a stream into two categories. They are "intermediate operations" and "terminal operations". ... There must then be a terminal operation which returns a final value and terminates the pipeline.
+map and flat map difference
+how to find min of list using stream without min
+Integer var = list.stream().min(Integer::compare).get();
+intermediate and ternery operations
+write functional interface and implement it
+method reference, what is optional
+
+difference between void execute() and Future submit() in executors framework
+A main difference between the submit() and execute() method is that ExecuterService. submit()can return the result of computation because it has a return type of Future, but the execute() method cannot return anything because's return type is void.
+
+what is eureka, gateway, hystrix
+
+Hysterix
+
+Hystrix is a library from Netflix. Hystrix isolates the points of access between the services, stops cascading failures across them and provides the fallback options.
+
+For example, when you are calling a 3rd party application, it takes more time to send the response. So at that time, the control goes to the fallback method and returns the custom response to your application.
+
+@HystrixCommand(fallbackMethod = "fallback_hello", commandProperties = {
+        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000"),
+        @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5")
+    })
+})
+private String fallback_hello() {
+   return "Request fails. It takes long time to response";
+}
+
+coding question
+--------------------------
+Simplest way to explain the sequence is: "go back, and if you can't go back, go forward".
+Write a program to print first N number of Recaman's sequence.
+First few numbers would be:
+0, 1, 3, 6, 2, 7, 13, 20, 12, 21, 11, 22, 10, 23....
+Interesting Tidbits:
+Neil Sloane (creator of the On-Line Encyclopedia of Integer Sequences (OEIS)) has conjectured that every number eventually appears, but it has not been proved.
+Allan Wilks, Nov 06 2001, computed 10^15 terms of this sequence. At this point all the numbers below 852655 had appeared, but 852655 = 5315501 was missing.
+After 10^25 terms of A005132 the smallest missing number is still - Benjamin Chaffin, Jun 13 2006
+Even after 7.78*10^37 terms, the smallest missing number is still - Benjamin Chaffin, Mar 28 2008
+Even after 4.28*10^73 terms, the smallest missing number is still - Benjamin Chaffin, Mar 22 2010
+Even after 10^230 terms, the smallest missing number is still 852655. - Benjamin Chaffin, 2018
+
+
+rest response sla
+how many containers are present in springboot
+
+In a typical Spring MVC project there two "containers": One created by ContextLoaderListener and the other created by DispatchServlet.
+
+transaction saga pattern
+isolation level, propagration level
+
+angular route guards
+angular life cycle
+
+
+
+==================
+//102
+//132
+
+//102 --> One Hundred and Two  
+
+public String intToWords(int x){
+
+String str = Integer.toString(x);
+int len = str.length();  //3
+int currentlength = len-1;
+
+
+
+Math.pow(10,currentlength);
+for(int i=0; i<len; i++){
+
+x/100 = 1
+x%100 = 2
+
+//
+x/10 = 3
+x%10 = 2
+
+//
+x/1 = 2
+x%1 = 0
+currentlength -1;
+}
+
+}
+
+//A,B,c,
+
+A =1, B=2 .... Z=26
+
+
+26+1        26+26
+AA=27 ......AZ = 52
+
+52+1
+BA = 53
+26*3+1
+CA=
+  26^2*1 + 26^1*1 + 26^0+1
+Strig str = "AAA";
+intial  = length-1;
+int sum =0;
+for(int i=0; i<str.length(); i++){
+char c =str.chatAt(i)
+sum = sum +Math.pow(26,intial--)*map.get(c)
+}
+returm sum;
+
+locah:8080/student/1
+locah:8080/student?id=1
+@RestControoler
+clase controller {}
+@GetMapping({/ID})
+public Student student(@Path Varibale Integer studentID) {
+
+return student;
+
+}
+
+
+@Service
+public sTrudent student(Integer sutudeid){
+
+@Autowired
+Studentreporstiy reposity;
+}
+
+@reposity
+sutdentrepostiry implement jpareport<Student,Integer>>{
+}
+
+@Entity
+Class Student{
+
+id,
+
+name,
+age
+}
+
+
+
+2nd round
+kubernetes
+docker
+volume
+docker image layer execution
+
+
+
+cisco
+================
+angular
+can we have same component name in two modules
+yes, we have to give alias
+import {Class1} from '../location1/class1'
+import {Class1 as Alias} from '../location2/class1'
+
+2. router onchange detection
+this.router.events.subscribe((event: Event) => {
+        if (event instanceof NavigationStart) {
+            // Show progress spinner or progress bar
+            console.log('Route change detected');
+        }
+https://www.angularjswiki.com/angular/how-to-detect-route-change-in-angular-with-examples/		
+Q)custom pipe used in project
+export class FetchJsonPipe implements PipeTransform {
+  private cachedData: any = null;
+  private cachedUrl = '';
+
+  constructor(private http: HttpClient) { }
+
+  transform(url: string): any {
+    if (url !== this.cachedUrl) {
+      this.cachedData = null;
+      this.cachedUrl = url;
+      this.http.get(url).subscribe(result => this.cachedData = result);
+    }
+
+    return this.cachedData;
+  }
+}
+angular child button (@input, @output)
+Q)angular behaviour subject,
+Observable is a Generic, and BehaviorSubject is technically a sub-type of Observable because BehaviorSubject is an observable with specific qualities.
+BehaviorSubject is a type of subject, a subject is a special type of observable so you can subscribe to messages like any other observable. The unique features of BehaviorSubject are:
+It needs an initial value as it must always return a value on subscription even if it hasn’t received a next()
+Upon subscription, it returns the last value of the subject. A regular observable only triggers when it receives an onnext
+at any point, you can retrieve the last value of the subject in a non-observable code using the getValue() method.
+https://shuaibabdulla40.medium.com/behaviorsubject-vs-observable-8d00e0435c4a
+closure,
+
+can we have one component with same name in two modules?
+what is debounce in angular and threshold in angular
+debounceTime(1000);
+what is the difference between template driven and reactive form
+reactive form is FormControl and Synchronous
+
+what is angular transtion (angular animate)
+A)transition('open => closed', animate('.5s ease-out', style({ height: 0 }) )
+
+what is angular zone.js
+Q)how to detect route changes
+this.router.events.pipe(
+
+private componentBeforeNavigation = null;
+  private setScrollToTopOnNavigation() {
+    // Scroll to top only when navigating to a different component
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      let currentRoute = this.route;
+      while (currentRoute.firstChild) currentRoute = currentRoute.firstChild;
+      if (this.componentBeforeNavigation !== currentRoute.component) {
+        if (window) window.scrollTo(0, 0);
+      }
+      this.componentBeforeNavigation = currentRoute.component;
+    });
+  }
+how to make angular service a singleton
+
+There are two ways to make a service a singleton in Angular:
+Set the providedIn property of the @Injectable() to "root" .
+Include the service in the AppModule or in a module that is only imported by the AppModule.
+
+java
+what is .join() and yield method in java multi thread.
+executorserverc
+join
+
+Yield in english means to give up or to surrender. Yield means currently executing thread gives chance to the threads that have equal priority in the Thread-pool.Yield does not guarantee that it will change the state of the currently executing thread to runnable state immediately.
+If a join is called on a thread instance than it can be used to join the start of a thread's execution to the end of another thread's execution, such that a thread will not start running until another thread has ended.
+
+deadlock
+join method
+filter vs intercepor
+Filters work more in the request/response domain, in the other hand interceptor act more in the method execution domain.
+
+ @Autowired
+   ProductServiceInterceptor productServiceInterceptor;
+   https://www.tutorialspoint.com/spring_boot/spring_boot_interceptor.htm
+security
+spring vs spring boot
+volatile
+how to find memory leaks
+memory leaks
+1. Through static Fields
+2.Unclosed Resources
+3.tomuch for loops
+4. Query performce-- cost of the query
+3.Improper equals() and hashCode() Implementations
+Findings
+1. Using Memory Profilers -CPU and Ram Memory -JProfiler
+2. Verbose Garbage Collection -verbose:gc
+3. Using Heap Dumps
+https://rollbar.com/blog/how-to-detect-memory-leaks-in-java-causes-types-tools/
+use for memory leaks
+
+
+2ndround**********
+jenkins, docker deploy
+executor framework
+aws services used
+Ui Amplify,Elastic Stalk for Server Code,RDS for DB
+
+
