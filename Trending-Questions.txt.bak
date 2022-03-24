@@ -10,7 +10,6 @@ Front end Angular Compoents, RX JS (state, Action,Effects)
 Backend is with legacy rest apis and Micro services
 
 APIGateWay-->Config Server->Many RestApis
-Eurekha Server for Services dispaly
 
 Execcutor Frame work
 Websphere and Weblogic cluster.
