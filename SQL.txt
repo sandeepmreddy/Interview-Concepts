@@ -1,6 +1,13 @@
 SQL VS NOSQL
 
+RANK
+---------
+SELECT name, score, RANK() OVER (ORDER BY score DESC) AS rank
+FROM students;
+
+
 Nth Highest salary
+-------------
 select * from(
 select ename, sal, dense_rank() 
 over(order by sal desc)r from Employee) 
@@ -18,6 +25,9 @@ Query performance:
 17. Avoid Cursors since cursor are very slow in performance.
 21. Use Stored Procedure for frequently used data and more complex queries.
 22. Keep transaction as small as possible since transaction lock the processing tables data and may results into deadlocks.
+23. Finding the partcular text in sql using like or regix. 
+SELECR color FROM styles
+  WHERE color REGEXP '#([[:xdigit:]]{3}|[[:xdigit:]]{6})';
 
 
 

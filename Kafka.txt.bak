@@ -96,7 +96,6 @@ public class KafkaConfiguration {
         return factory;
     }
 
-For user object:
 
     @Bean
     public ConsumerFactory<String, User> userConsumerFactory() {

@@ -2,8 +2,8 @@ APIGateWay-->ConfigServer
 Micro services
 
 Netflix opensource libraries
-Eureka
-Spring Cloud Configuration server/Zuul/Apache Zoo Keeper(APIGateWay-ConfigServer)
+Eureka//Apache Zoo Keeper(Registry)
+Spring Cloud Configuration server/Zuul(APIGateWay-ConfigServer)
 Ribbon 
 Hysterix
 Slueth/Zipkin
@@ -23,7 +23,9 @@ Ribbon --> Spring-cloud-starter-netflix-ribbon go in round robin load balancing
     <version>2.2.10.RELEASE</version>
 </dependency>
 
-Sleuth is another tool from the Spring cloud family. It is used to generate the trace id, span id and add this information to the service calls in the headers and MDC, so that It can be used by tools like Zipkin and ELK etc. to store, index and process log files. requests made with the RestTemplate etc.
+Sleuth is another tool from the Spring cloud family. It is used to generate the trace id, span id and add this information to the service 
+calls in the headers and MDC, so that It can be used by tools like Zipkin and ELK etc. to store, index and process log files. 
+requests made with the RestTemplate etc.
 {service name,trace id, span id,export flag}
 
 trace id is same id across all services
@@ -143,12 +145,14 @@ You need skilled professionals to support heterogeneously distributed microservi
 3.Acceptance testing
 
 10) Explain the use of PACT in Microservices architecture?
-The Pact Framework is an Implementation of Consumer Driven Contracts. These are simple JSON files that define expected request and response structure between two microservices. ... You can leverage this to test your microservices locally and on a CI environment
+The Pact Framework is an Implementation of Consumer Driven Contracts. These are simple JSON files that define expected request 
+and response structure between two microservices. ... You can leverage this to test your microservices locally and on a CI environment
 It is an open source tool which allows testing interactions between service providers and consumers.
 
 11) What is the meaning of OAuth?
 
-OAuth means open authorization protocol. This protocol allows you to access the client applications on HTTP for third-party providers GitHub, Facebook, etc. It helps you to share resources stored on one site with another site without the need for their credentials.
+OAuth means open authorization protocol. This protocol allows you to access the client applications on HTTP 
+for third-party providers GitHub, Facebook, etc. It helps you to share resources stored on one site with another site without the need for their credentials.
 
 12)"ELK" is the acronym for three open source projects: Elasticsearch, Logstash, and Kibana.
 
@@ -159,7 +163,8 @@ ActiveMQ
 
 Advanced Message Queuing Protocol (AMQP) could be used.
 
-The main difference between scaling up and scaling out is that horizontal scaling simply adds more machine resources to your existing machine infrastructure. Vertical scaling adds power to your existing machine infrastructure by increasing power from CPU or RAM to existing machines.
+The main difference between scaling up and scaling out is that horizontal scaling simply adds more machine resources to your existing machine infrastructure.
+ Vertical scaling adds power to your existing machine infrastructure by increasing power from CPU or RAM to existing machines.
 
 On Class
 @EnableHystrixDashboard
@@ -172,9 +177,11 @@ Fluentd(Log collector): To Trasform data into Unified Format and Stores into EWl
 
 Enrich Data like redact important data.
 
-Fluentd scraps logs from a given set of sources, processes them (converting into a structured data format) and then forwards them to other services like Elasticsearch, object storage etc. ... Fluentd gets data from multiple sources. It structures and tags data.
+Fluentd scraps logs from a given set of sources, processes them (converting into a structured data format) and then forwards them to other services 
+like Elasticsearch, object storage etc. ... Fluentd gets data from multiple sources. It structures and tags data.
 
 EFK VS ELK
-FluentD and Logstash are both open source data collectors used for Kubernetes logging. Logstash is centralized while FluentD is decentralized. FluentD offers better performance than Logstash.
+FluentD and Logstash are both open source data collectors used for Kubernetes logging. 
+Logstash is centralized while FluentD is decentralized. FluentD offers better performance than Logstash.
 
 

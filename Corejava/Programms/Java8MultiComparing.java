@@ -1,12 +1,9 @@
-package test;
-
-
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
-public class Java8GroupMax {
+public class Java8MultiComparing {
 
     private static List<Employee> getEmployees(){
         List<Employee> empList = new ArrayList<Employee>();
@@ -26,6 +23,8 @@ public class Java8GroupMax {
         List<Employee> employeeList = getEmployees();
 
         Map<Integer,Long> map = employeeList.stream().collect(Collectors.groupingBy(Employee::getEmpAge,Collectors.counting()));
+
+        map.forEach((k,v)->System.out.println("Age: " + k + ", count: " + v));
 
         //Grouping on multiple fields
         Map<String, Map<Integer, Long>> multipleFieldsMap1 = employeeList.stream()

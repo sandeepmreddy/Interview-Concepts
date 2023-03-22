@@ -54,3 +54,7 @@ resourceVersionUtil.register(POST_ARCHIVE_V2, this.repoDetails , archiveWriteV2A
                         (args) -> triggerPolicyBasedArchiveWrite(args, PolicyBasedArchivingVersion.ARCHIVE_WRITE_POLICY_JSON_V3),
                         (args) -> triggerPolicyBasedArchiveWrite(args, PolicyBasedArchivingVersion.ARCHIVE_WRITE_POLICY_JSON_V2)
                 );
+				
+
+1. Calculating the hashmap index 
+Index = hashcode(Key) % (n-1)  ;

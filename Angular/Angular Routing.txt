@@ -1,0 +1,37 @@
+app-routing.module.ts
+------------------------
+const routes: Routes = [
+  { path: '', component: HomeComponent, },
+  { path: 'contact', component: ContactComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'signup1', component: SignupComponent },
+  { path: 'policy', component: PolicyComponent },
+  { path: '**', component: NotFoundComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  declarations: []
+})
+
+app.component.html
+-------------------
+<nav>
+      <ul>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/about">About</a></li>
+        <li><a routerLink="/contact">Contact</a></li>
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/signup">Signup</a></li>
+        <li><a routerLink="/signup1">Signup1</a></li>
+        <li><a routerLink="/policy">Policy</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>

@@ -1,6 +1,7 @@
 @RunWith(SpringJUnit4ClassRunner.class)
 
-PowerMock is an extension to Mockito that allows mocking of static methods, constructors, final classes and methods, private methods, removal of static initializers and more.
+PowerMock is an extension to Mockito that allows mocking of static methods, constructors, 
+final classes and methods, private methods, removal of static initializers and more.
 
 
 @BeforeClass
@@ -26,4 +27,49 @@ PowerMock is an extension to Mockito that allows mocking of static methods, cons
 	 @Test
     public void testOne() {
         System.out.println("Test One");
+    }
+	}
+	
+
+A partial mock object, also known as a spy, is an object that is partially real and partially mocked.
+	
+ @Spy
+MyObject myObject = new MyObject();
+doReturn("mock value").when(myObject).getValue();
+
+@InjectMocks: This annotation is used to inject the mock objects created by @Mock
+
+ @InjectMocks
+    private MyService myService;
+
+@Captor is used to capture arguments passed to a mock object's method call.
+
+@Captor
+    private ArgumentCaptor<MyEntity> entityCaptor;
+	
+Verify Examples
+----------------
+
+List<String> mockList = mock(List.class);
+mockList.add("item1");
+mockList.add("item2");
+
+verify(mockList).add("item1");
+verify(mockList, times(2)).add(anyString());
+verify(mockList, never()).add("item3");
+
+@Test(expected = UserNotFoundException.class)
+
+Or
+
+@Test
+    public void testDeleteUserUserNotFoundException() {
+        String userId = "123";
+        when(userRepository.findUserById(userId)).thenReturn(null);
+        
+        UserNotFoundException exception = assertThrows(UserNotFoundException.class, () -> {
+            userService.deleteUser(userId);
+        });
+        
+        assertEquals("User not found", exception.getMessage());
     }

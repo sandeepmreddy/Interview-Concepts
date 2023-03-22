@@ -31,3 +31,7 @@ Java code optimization:
 https://www.geeksforgeeks.org/12-tips-to-optimize-java-code-performance/
 
 java performance tool : JProfiler
+
+HashMap vs Linked hashmap
+
+The key difference between HashMap and LinkedHashMap is order. Elements of a HashMap are not in order, totally random, whereas elements of LinkedHashMap are ordered. The entries of a LinkedHashMap are in key insertion order, which is the order in which the keys are inserted in the Map.
