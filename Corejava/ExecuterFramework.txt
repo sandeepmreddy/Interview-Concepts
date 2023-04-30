@@ -70,3 +70,10 @@ public String call() throws Exception
 {
 	return "Hiiii " + message + "!";
 }
+
+ExecutorService executor =
+        new ThreadPoolExecutor(0, maxPoolSize, keepAliveTime, timeUnit,
+                               new LinkedBlockingDeque<>());
+							   
+CompletableFuture<String> futureOutput =
+        CompletableFuture.supplyAsync(() -> "test", executor);

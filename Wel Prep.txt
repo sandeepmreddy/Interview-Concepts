@@ -14,7 +14,7 @@ Serialization Object -->ByteStream
 De Serialization ByteStream-->Object
 
 3. HashMap Internal implementation
-index = hashCode(key) & (n-1)
+index = hashCode(key) % (n-1)
 
 Custom HaspMap
 

@@ -1,12 +1,16 @@
+APIGateWay(Apigee/Zuul/Ribbon/Spring Cloud Configuration server)-->Each service-->DB/Kafka
+         |
+         |		
+Eurekhaserver/Apache Zoo Keeper(Registry)(Discovery server)
+
+
 APIGateWay-->ConfigServer
-Micro services
+
 
 Netflix opensource libraries
-Eureka//Apache Zoo Keeper(Registry)
-Spring Cloud Configuration server/Zuul(APIGateWay-ConfigServer)
 Ribbon 
 Hysterix
-Slueth/Zipkin
+Slueth(trace id is acroos applications, span id)/Zipkin(Distributed tracing system)
 
 Micro services design aptterns
 API Gateway.

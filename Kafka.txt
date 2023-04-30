@@ -4,7 +4,9 @@ https://github.com/TechPrimers/spring-boot-kafka-consumer-example
 
 kafka-topics -zookeeper localhost:2181 -topic <topic_name> -create  
 
-Producer
+kafkaTemplate has ProducerFactory and send method.
+KafkaListener has ConsumerFactory and consume method.
+
 -----------
 
 @RestController

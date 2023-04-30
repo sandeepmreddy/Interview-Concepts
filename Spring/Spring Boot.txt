@@ -10,6 +10,7 @@ to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their
 5.Auto dependency resolution and Auto Configuration
 6.Embeded Http services
 7.Spring boot cli
+
 2. How to remove tomcat from Spring boot
 
 Remove default tomcat
@@ -27,6 +28,7 @@ Remove default tomcat
 Change Port : By using the server.port in the application.properties
 
 3. Spring Boot Advantages
+
 1. Auto configuration
 2.Creates stanalone application
 3.Embeded tomcat
@@ -92,7 +94,9 @@ not to apply to any specific class.
 @EnableAutoConfiguration(exclude={className})
 
 13. What is Spring Actuator? What are its advantages?
-An actuator is an additional feature of Spring that helps you to monitor and manage your application when you push it to production. These actuators include auditing, health, CPU usage, HTTP hits, and metric gathering, and many more that are automatically applied to your application.
+An actuator is an additional feature of Spring that helps you to monitor and manage your application when you push it to production.
+ These actuators include auditing, health, CPU usage, HTTP hits, and metric gathering, and many more that
+ are automatically applied to your application.
 
 14. How to enable Actuator in Spring boot application?
 To enable the spring actuator feature, we need to add the dependency of “spring-boot-starter-actuator” in pom.xml.

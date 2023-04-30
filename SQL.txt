@@ -28,6 +28,13 @@ Query performance:
 23. Finding the partcular text in sql using like or regix. 
 SELECR color FROM styles
   WHERE color REGEXP '#([[:xdigit:]]{3}|[[:xdigit:]]{6})';
+  
+Left outer join , We get all records of employee and null of departments 
+  
+SELECT *
+FROM employees, departments
+WHERE employees.department_id(+) = departments.department_id;
+
 
 
 

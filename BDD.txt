@@ -1,0 +1,3 @@
+BDD stands for Behavior-Driven Development. It is behavior of software through examples in natural language.
+
+Cucmber framework, Gherkin syntax in *.feature files.
