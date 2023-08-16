@@ -1,3 +1,47 @@
 BDD stands for Behavior-Driven Development. It is behavior of software through examples in natural language.
 
-Cucmber framework, Gherkin syntax in *.feature files.
+Cucmber framework, Gherkin syntax in *.feature files. Human readable format
+
+https://chat.openai.com/share/eb63f6df-660e-45b2-aa09-abc95a7f9319
+
+Karate for java APIS
+
+Feature: Testing the Calculator Service
+
+  Scenario: Adding two numbers
+    Given url 'http://localhost:8080/api/calculate'
+    And path 'operation', 'add'
+    And params { num1: 5, num2: 7 }
+    When method GET
+    Then status 200
+    And match response == { result: 12 }
+    
+  Scenario: Subtracting two numbers
+    Given url 'http://localhost:8080/api/calculate'
+    And path 'operation', 'subtract'
+    And params { num1: 10, num2: 3 }
+    When method GET
+    Then status 200
+    And match response == { result: 7 }
+	
+	package com.example.test.steps;
+
+import com.intuit.karate.Step;
+import com.intuit.karate.junit5.Karate;
+
+public class CalculatorSteps {
+
+    @Step("Given url {string}")
+    public String givenUrl(String url) {
+        return url;
+    }
+
+    @Step("And path {string}, {string}")
+    public String givenPath(String key, String value) {
+        return key + "/" + value;
+    }
+
+    // Define other step methods here...
+
+}
+

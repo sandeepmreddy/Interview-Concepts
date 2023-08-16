@@ -1,0 +1,45 @@
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+
+public class CompletableFutureExample {
+    public static void main(String[] args) {
+        CompletableFuture<Void> task1 = CompletableFuture.supplyAsync(() -> {
+            // Task 1 logic
+            System.out.println("Task 1 is running");
+            return null; // CompletableFuture<Void>
+        });
+
+        CompletableFuture<Void> task2 = CompletableFuture.supplyAsync(() -> {
+            // Task 2 logic
+            System.out.println("Task 2 is running");
+            return null; // CompletableFuture<Void>
+        });
+
+        CompletableFuture<Void> task3 = CompletableFuture.supplyAsync(() -> {
+            // Task 3 logic
+            System.out.println("Task 3 is running");
+            return null; // CompletableFuture<Void>
+        });
+
+        // Wait for all tasks to complete
+        try {
+            CompletableFuture.allOf(task1, task2, task3).get();
+            System.out.println("All tasks completed");
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+Then, the CompletableFuture.allOf(task1, task2, task3) method is used to wait for all tasks to complete. The get() method is called to block until all tasks are finished. If any of the tasks encounters an exception, it will be propagated.
+
+Alternatively, if you're only interested in waiting for the completion of the tasks without collecting their results, you can use the CompletableFuture.join() method:
+
+try {
+    task1.join();
+    task2.join();
+    task3.join();
+    System.out.println("All tasks completed");
+} catch (Exception e) {
+    e.printStackTrace();
+}

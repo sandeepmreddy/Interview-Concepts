@@ -95,6 +95,9 @@ log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:
 
 final static Logger logger = Logger.getLogger(Log4JCoreJavaSample.class);
 
+Logback generally offers superior performance and configurability compared to Log4j, 
+making it a preferred choice for modern Java logging needs.
+
 4.	
 @ConditionalOnProperty(prefix = "spring", name = "asy.library.type", havingValue = "rest", matchIfMissing = true)
 public class LibRestClientAutoConfiguration {

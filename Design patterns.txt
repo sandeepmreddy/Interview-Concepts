@@ -1,4 +1,5 @@
 String jwtToken = Jwts.builder(),Stream.map.Collect() -- Builder patterns
+StringBuilder,Apache HttpClient library:
 
 Builder pattern :
 --------------------

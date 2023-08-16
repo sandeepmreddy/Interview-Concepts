@@ -191,6 +191,13 @@ In case the Cloneable interface is not
 implemented and just the method is overridden, 
 it results in CloneNotSupportedException in Java.
 
+Shallow Copy:
+A shallow copy of an object creates a new object but does not duplicate the contents of the object. Instead, it copies the references to the objects contained within the original object. 
+
+Deep Copy:
+A deep copy creates a new object and recursively duplicates the contents of the original object as well as the objects contained within it. This approach is more complex and might require custom implementations for copying nested objects.
+
+https://chat.openai.com/share/b3c9fc60-c112-4ec1-8e7a-8c1077ae1896
 
 
 19. The contract between equals() and hashCode() is:

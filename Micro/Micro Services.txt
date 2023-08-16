@@ -188,4 +188,6 @@ EFK VS ELK
 FluentD and Logstash are both open source data collectors used for Kubernetes logging. 
 Logstash is centralized while FluentD is decentralized. FluentD offers better performance than Logstash.
 
+Splunk
+
 

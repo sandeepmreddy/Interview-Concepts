@@ -9,16 +9,38 @@ Association ->child doesnot exist without parent
 ConcurrenthashMap--Segment/Bucket locking
 
 How to create Immutable class?
-1.Class should be the final --. Not to override
+1.Class should be the final --. Not to extend
 2.Inside methods and variables are private and final
 3.Public constrcttor
 4.No Setter methods/only getter methods
+
+public final class ImmutablePerson {
+    private final String name;
+    private final int age;
+    
+    public ImmutablePerson(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    private String getName() {
+        return name;
+    }
+    
+    private int getAge() {
+        return age;
+    }
+}
+
 
 
 3. Can singleton implement interface?
 If a singleton is not a static class, it can implement any interface you want. The only thing that a singleton pattern prevents is instantiation of multiple instances of a singleton class, but that doesn't mean you cannot completely replace the implementation with something else.
 
 4.Can we override the static method in Java?
+'
+No, static methods cannot be overridden in Java. They are associated with the class itself, not with instances, so they don't participate in polymorphism and overriding.
+
 The answer to this question is No, you cannot override the static method in Java because the method overriding is based upon dynamic binding at runtime and static methods are bonded using static binding at compile time. This means static methods are resolved even before objects are created, that's why it's not possible to override static methods in Java. Though you can declare a method with the same name and method signature in the subclass which does look like you can override static methods in Java but in reality that is method hiding. 
 
 

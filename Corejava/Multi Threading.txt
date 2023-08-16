@@ -10,7 +10,8 @@ Race conditions can be avoided by proper thread synchronization in critical sect
 
 Q)What is atomic variables in java?
 
-The most commonly used atomic variable classes in Java are AtomicInteger, AtomicLong, AtomicBoolean, and AtomicReference. set() – writes the value to memory, so that the change is visible to other threads; equivalent to writing a volatile variable.
+The most commonly used atomic variable classes in Java are AtomicInteger, AtomicLong, AtomicBoolean, 
+and AtomicReference. set() – writes the value to memory, so that the change is visible to other threads; equivalent to writing a volatile variable.
 
 Q)Voltaile Vs Atomic 
 
