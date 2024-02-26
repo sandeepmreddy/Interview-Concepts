@@ -1,0 +1,50 @@
+JWT has HEADER,Payload and signature
+Encode
+String jwtToken = Jwts.builder() -- Builder pattern
+        .claim("name", "Jane Doe")
+        .claim("email", "jane@example.com")
+        .setSubject("jane")
+        .setId(UUID.randomUUID().toString())
+        .setIssuedAt(Date.from(now))
+        .setExpiration(Date.from(now.plus(5l, ChronoUnit.MINUTES)))
+        .compact();
+Decode
+String token = "eyJ0...fr0sg==";
+DecodedJWT jwt = JWT.decode(token);
+String header = jwt.getHeader();           
+System.out.println("Subject = "+jwt.getSubject());
+System.out.println("Payload = "+jwt.getPayload());
+System.out.println("Token = "+jwt.getToken());
+System.out.println("Subject = "+jwt.getContentType());
+System.out.println("Id = "+jwt.getId());
+System.out.println("KeyId = "+jwt.getKeyId());
+System.out.println("Signature = "+jwt.getSignature());
+
+Verify using client code
+--------------------------
+private static final String SECRET_KEY = "your_secret_key_here"; // Replace with your actual secret key
+
+    public static void verifyJwt(String token) {
+        try {
+            // Decode and verify the token
+            Jwts.parserBuilder()
+                .setSigningKey(Keys.hmacShaKeyFor(SECRET_KEY.getBytes()))
+                .build()
+                .parseClaimsJws(token);
+
+            System.out.println("JWT token is valid");
+			
+Similar apporach for verifying APIGEE Token
+------------------------------
+String token = "YOUR_APIGEE_TOKEN_HERE";
+        String publicKey = "YOUR_PUBLIC_KEY_OR_SECRET_HERE";
+
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(publicKey); // or Algorithm.RSA256(publicKey)
+            JWTVerifier verifier = JWT.require(algorithm)
+                    .withIssuer("APIGEE_ISSUER") // Validate issuer
+                    .build();
+            DecodedJWT jwt = verifier.verify(token);
+            
+            // Token is valid, you can now use its claims
+            System.out.println("Token is valid!");

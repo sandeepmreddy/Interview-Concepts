@@ -1,3 +1,31 @@
+1. Why java 8 functinal programmimg better than java 7?
+Parallel Processing execution on multi-core systems, potentially boosting performance
+Lambada Conciseness and Readability
+Streams Immutability
+Functional programming : Functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data. 
+2. How kafka filtering mechnisam works?
+Parallelism: Kafka Streams applications can scale horizontally by adding more instances. Each instance processes a subset of the partitions, enabling parallel processing of messages.
+https://www.cloudduggu.com/kafka/architecture/kafka_architecture.png
+3.Startegy Pattern
+The Strategy Pattern is a behavioral design pattern in Java that enables an object, called a context, to choose from different algorithms or strategies at runtime. This pattern defines a family of algorithms, encapsulates each one of them, and makes them interchangeable within the family.
+4.Circuit Breaker
+5.Streams vs List
+
+Streams:
+Definition: A stream is a sequence of data elements made available over time. Unlike lists, which are stored in memory all at once, streams are processed as they are produced.
+Data Handling: Streams are particularly useful when dealing with large or infinite datasets where it's not feasible or practical to load all data into memory at once.
+Lazy Evaluation: Streams often use lazy evaluation, meaning elements are computed only when they're needed, which can save memory and processing time.
+Operations: Streams support various operations such as map, filter, reduce, and collect. These operations can be performed sequentially or in parallel, depending on the characteristics of the stream and the underlying implementation.
+Examples: Streams are prevalent in languages like Java (Java Streams).
+
+Streams are immutable and list has objects
+Memory Usage: Lists typically consume more memory as they store all elements simultaneously, while streams process elements as needed, potentially reducing memory overhead.
+Processing Time: Streams may offer better performance for certain operations, especially when dealing with large datasets, due to lazy evaluation and the ability to parallelize operations.
+Usage: Lists are suitable for situations where you need random access to elements and can afford to load all data into memory. Streams are preferred when dealing with large datasets, especially those that are generated or consumed incrementally.
+Functional Programming: Streams are more closely associated with functional programming paradigms, emphasizing immutability and higher-order functions, while lists are a more general-purpose data structure used across different programming paradigms.
+
+6.How to handle the senistive data passing the customer
+MAsking,JWT token
 
 
 Serializable Interface in Java:
@@ -27,6 +55,8 @@ public class Entry<K, V> {
     public Entry(K key, V value, Entry<K, V> next){
 	
 4. Dispatcher Servlet->handler mapping->conroller(response Model view)->view resolver->view
+
+Difference between Spring VS Spring Boot
 	
 	
 	

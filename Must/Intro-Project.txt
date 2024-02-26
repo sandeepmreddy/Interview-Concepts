@@ -1,0 +1,30 @@
+
+I'm currently involved in developing applications for home lending. We've recently completed the implementation of a home lending bankruptcy application and have successfully deployed it into production. This application primarily retrieves data from the Mortgage Servicing Platform (MSP) based on the provided input, executes sequencer logic, and closes the bankrptcy work station
+
+Presently, our focus is on the InfoEx project. In this PROJECT, our micro component plays a key role in providing data TO VENDOR for comprehensive data analysis.
+
+
+I am specilized in technologies Java,J2EE, SPring Boot,Micro services,Some extent to Angular to meet project requirements
+
+
+and I am incrediably passionate about technology and have profound understading how to apply effectively.
+
+I am capable to write data structucre progrmms like Sorting,Linked list,Tree, graphs, array programms
+
+Some of my day to day activities I used to get the Requirement from product team and acting as a lead and co ordinated with team to deliver the qulity product
+My skillset set encompasses system design and i have a proven track record of crafting comprehresive techinical design documents to guide team effectively.
+
+I have led few applications LMCO,HLBNK and portion of Infoex project.
+
+Last year i got spot light award towards my contribution
+
+I collbarate with many teams to collate the data as and when needed and provide solutions for technicla challanges.
+
+Recently involved in writing the programms like executor frame work
+
+Involved in writing kafka streaming,filters and JWT
+
+Created the service now tickets and game plan for production deployment.
+
+I collabarate closely with product team to gather project requirements subsequently co-orindinating with development team to develiver the robostic solution.
+

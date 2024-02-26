@@ -1,5 +1,8 @@
 https://github.com/sudheerj/angular-interview-questions
 
+Angular is SPA,AOT(Already compiled,HTTP Filter(Security,Authentication,Caching,Logging),Error Handling),Root Guards(Restication to login,admin page),
+ChangeDetection using zone,Pipes(Currency,Date),Dependency Injection,optional dependency,Lazy loading,Observable,Debounce Time,Components can be re utilized,data binding.
+
 1.tsconfig.json	The base TypeScript configuration for projects in the workspace. 
 {
   "compileOnSave": false,
@@ -82,7 +85,8 @@ Better Structured,easy to create and manage bigger applications.
 6. What are decorators in Angular?
 Decoractors are functions that allow a service, directive or filter to be modified prior to its usage
 Angular supports 4 types of decoraters
-1.Class decorators, e.g. @Component and @NgModule2.Property decorators for properties inside classes, e.g. @Input and @Output
+1.Class decorators, e.g. @Component and @NgModule-- FormsModule,BrowserModule,HttpModule,RouterModule
+2.Property decorators for properties inside classes, e.g. @Input and @Output
 3.Method decorators for methods inside classes, e.g. @HostListener
 4.Parameter decorators for parameters inside class constructors, e.g. @Inject
 7Q. Angular Adantages
@@ -92,6 +96,10 @@ Template URL and Template:'<div></div>
 9.1: Directive:
 Directives are classes that add additional behavior to elements in your Angular applications.
 10.Component Directives: Component directives are used in main class. They contain the detail of how the component should be processed, instantiated and used at runtime.
+
+@Directive({
+  selector: '[appHoverHighlight]'
+})
 
 Structural Directives: Structural directives start with a * sign. These directives are used to manipulate and change the structure of the DOM elements. For example, *ngIf directive, *ngSwitch directive, and *ngFor directive.
 
@@ -153,15 +161,15 @@ Better security
 
 19.AngularJS provides filters to transform data:
 
-currency Format a number to a currency format.
-date Format a date to a specified format.
-filter Select a subset of items from an array.
-json Format an object to a JSON string.
-limitTo Limits an array/string, into a specified number of elements/characters.
-lowercase Format a string to lower case.
-number Format a number to a string.
-orderBy Orders an array by an expression.
-uppercase Format a string to upper case.
+Currency Filter - Formats a number as a currency.
+Date Filter - Formats a date.
+Number Filter - Formats a number.
+Uppercase Filter - Converts a string to uppercase.
+Lowercase Filter - Converts a string to lowercase.
+Filter Filter - Filters an array based on a predicate function.
+OrderBy Filter - Orders an array by a specified property.
+LimitTo Filter - Limits an array/string to a specified number of elements/characters.
+JSON Filte
 
 20. View encapsultion in Angular?
 
@@ -178,9 +186,10 @@ Constructor()
 
 25.Template Statement Ex: Calling the button click event calls the component method.
 
-26. JIT VS AOT
+26. JIT(It will compile) VS AOT (It is aleady compiled code)
 
-JIT	AOT
+
+AOT is small bundle,secure and saves comiplation time.
 JIT downloads the compiler and compiles code exactly before Displaying in the browser.	AOT has already complied with the code while building your application, so it doesn’t have to compile at runtime.
 Loading in JIT is slower than the AOT because it needs to compile your application at runtime.	
 Loading in AOT is much quicker than the JIT because it already has compiled your code at build time.
@@ -224,9 +233,12 @@ export class AppComponent implements OnInit {
   
 }
 
-32. https://www.pluralsight.com/guides/difference-between-template-driven-and-reactive-forms-angular
+32. https://www.pluralsight.com/guides/difference-between-template-driven-and-reactive-forms-angula
+Template Driven Forms like struts forms
+Reactive forms create using .create,FormBuilder,FormGroup
 33. Bootstrap loading?
 34. Eager and Lazy loading-->same like spring
+Angular uses lazy loading by default for routing modules.
 35.Angular has Regular DOM with tree structure of HTML tags
 36. Dependency example ng g service HeroService
 Dependencies from external sources.
@@ -288,7 +300,7 @@ export class FetchJsonPipe implements PipeTransform {
 }
 
 
-Observables	Promises
+Observables vs	Promises
 Emit multiple values over a period of time.	Emit a single value at a time.
 Are lazy: they’re not executed until we subscribe to them using the subscribe() method.	Are not lazy: execute immediately after creation.
 Have subscriptions that are cancellable using the unsubscribe() method, which stops the listener from receiving further values.	Are not cancellable.
@@ -297,7 +309,7 @@ Deliver errors to the subscribers.	Push errors to the child promises.
 
 https://www.syncfusion.com/blogs/post/angular-promises-versus-observables.aspx
 
-Root Guards :
+Root Guards can be protected root level login,admin
 https://stackoverflow.com/questions/50485433/how-to-use-angular-6-route-auth-guards-for-all-routes-root-and-child-routes
 
 @Injectable()
@@ -318,7 +330,7 @@ export class AuthGuard implements CanActivate {
 }
 
 
-scss vs css
+sass vs css
 SASS (Syntactically Awesome Style Sheets) is a pre-processor scripting language that will be compiled or interpreted into CSS. SassScript is itself a scripting language whereas SCSS is the main syntax for the SASS which builds on top of the existing CSS syntax. It makes use of semicolons and brackets like CSS (Cascaded Style Sheets).
 
 Zone.JS
@@ -635,6 +647,7 @@ There are two types of injector hierarchies in Angular
 ModuleInjector hierarchy: It configure on a module level using an @NgModule() or @Injectable() annotation.
 ElementInjector hierarchy: It created implicitly at each DOM element. Also it is empty by default unless you configure it in the providers property on @Directive() or @Component().
 
-
-== check the content
-=== check the objects are equal.
+What is Angular Universal?
+SSR-Server side rendering
+What are some strategies for optimizing Angular applications for better performance?
+Lazy loading,AOT,Treeshaking,bundle size

@@ -1,10 +1,15 @@
-APIGateWay(Apigee/Zuul/Ribbon/Spring Cloud Configuration server)-->Each service-->DB/Kafka
+APIGateWay(APIGEE/Zuul/Ribbon/Spring Cloud Configuration server)-->Each service-->DB/Kafka
          |
          |		
 Eurekhaserver/Apache Zoo Keeper(Registry)(Discovery server)
 
 
 APIGateWay-->ConfigServer
+
+Use API Gateways with authentication and authorization.
+Apply role-based access control (RBAC).
+Eurekha discovery server
+Kafka
 
 
 Netflix opensource libraries
@@ -18,6 +23,8 @@ Chain of Responsibility.
 Asynchronous Messaging.
 Database or Shared Data.
 Circuit breaker
+The Saga pattern is a design pattern-- The Saga pattern decomposes a single large transaction into a series of smaller, more manageable steps or sub-transactions, each of which can be independently executed and compensated if necessary.
+Polyglot persistence -- Each database for each micro service.
 
 
 Ribbon --> Spring-cloud-starter-netflix-ribbon go in round robin load balancing
@@ -125,6 +132,7 @@ Hystrix - Failure mechanisam
 In service bootstrap.properties , app.name, clould.config.uri 
 Zipkin - Per request - 1 trasaction across all applications -smiliar to Slueth  id
 
+Sleuth is another tool from the Spring cloud family. It is used to generate the trace id, span id and add this information to the service calls in the headers and MDC, so that It can be used by tools like Zipkin and ELKetc.
 
 4) What are the advantages of microservices?
 
@@ -179,15 +187,22 @@ On Methods
 
 Fluentd(Log collector): To Trasform data into Unified Format and Stores into EWlatic Search,S3,Kafka that is collected from different sources.
 
-Enrich Data like redact important data.
+Enrich D
 
-Fluentd scraps logs from a given set of sources, processes them (converting into a structured data format) and then forwards them to other services 
-like Elasticsearch, object storage etc. ... Fluentd gets data from multiple sources. It structures and tags data.
+Service Registry: Services register themselves with a service registry (e.g., Netflix Eureka) to enable service discovery and dynamic routing.
 
-EFK VS ELK
-FluentD and Logstash are both open source data collectors used for Kubernetes logging. 
-Logstash is centralized while FluentD is decentralized. FluentD offers better performance than Logstash.
+API Gateway: A single entry point for clients to interact with multiple microservices. It helps with load balancing, authentication, and routing.
 
-Splunk
+Circuit Breaker: Prevents cascading failures by temporarily halting requests to a service that is failing, allowing it to recover.
+
+Saga Pattern: Manages long-lived transactions across multiple microservices by coordinating a sequence of local transactions.
+
+Command Query Responsibility Segregation (CQRS): Separates read and write operations for data, allowing for different models optimized for reading and writing.
+
+Database per Service: Each microservice has its database, ensuring loose coupling and independent development and deployment.
+
+Event-Driven Architecture (EDA): Microservices communicate asynchronously through events, enabling decoupling and scalability.
+
+Retry Pattern: Automatically retries failed operations with backoff strategies to improve reliability.
 
 

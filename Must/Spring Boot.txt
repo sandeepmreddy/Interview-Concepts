@@ -140,3 +140,17 @@ Whereever we want to handle exception in Class @ExceptionHandler
 2.Spring Boot -Only all are artifact ids in the pom.xml
 3.The @SpringBootApplication annotation is equivalent 
 to using @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes.
+
+
+15. How do you create a RESTful Web Service in Spring Boot?
+You can create a RESTful Web Service in Spring Boot by using the 
+@RestController annotation on your controller class and using @RequestMapping or @GetMapping, @PostMapping, etc., 
+annotations to map HTTP requests to specific handler methods.
+
+@RestController
+public class MyRestController {
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello, World!";
+    }

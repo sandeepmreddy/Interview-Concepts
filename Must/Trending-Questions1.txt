@@ -20,7 +20,7 @@ console.log(addThree(1));
 console.log(addFour(1));
 
 
-he JavaScript prototype property allows you to add new properties to object constructors:
+The JavaScript prototype property allows you to add new properties to object constructors:
 
 Example
 function Person(first, last, age, eyecolor) {

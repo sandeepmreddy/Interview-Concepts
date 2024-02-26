@@ -1,10 +1,12 @@
-The application is content management application, This will used for Banking and insurance companies.
-If there is a big report like 100 pages, then the report has topics like multiple accounts,cities,states,departments.
-For each of those data archived into separate Topics accounts,cities,departments. 
-This data can be viewed through navigation and can get using the saerch.
-This application has both view and admin pages.
+The application is Home lending application and this deals with loss mitigation.
+If the customer is facing hardship, Early resolution application provides zero payments for six months.
+Bankrptcy will release the loan and it updates all the necessary foreclosure step codes.
+
+Integration of the application and Reconsillation of various components. 
 
 The flow of th applcaition is 
+Angular-->Microservices-->MSP-->DB
+Applications are deployed in PCF,Cloud management portal.
 
 Front end Angular Compoents, RX JS (state, Action,Effects)
 Backend is with legacy rest apis and Micro services
@@ -17,7 +19,7 @@ in microservices architecture by enabling service registration, discovery, and l
 Execcutor Frame work
 Websphere and Weblogic cluster.
 1. Create JWT token
-2.JWT tokens has header,body,signature
+2.JWT tokens has header,body,signature along with subject,contentType..etc
 3.From client Verify JWT Token signature
 4. Get the JWT header and body by splitting it into tokens.
 https://www.viralpatel.net/java-create-validate-jwt-token/
@@ -62,7 +64,8 @@ Content-Type: application/json;charset=UTF-8
     System.out.println("Issuer: " + claims.getIssuer());
     System.out.println("Expiration: " + claims.getExpiration());
 	
-	
+1.1 APIGEE token
+1.2 hystrix circuit breaker vs resilience4j	
 2. Netflix Hysterix
 
 Hystrix is a library from Netflix. Hystrix isolates the points of access between the services, stops cascading failures across them and provides the fallback options.
