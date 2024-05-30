@@ -1,0 +1,35 @@
+db.employees.find()
+db.employees.find(
+  { "department": "Sales" },
+  { "name": 1, "position": 1, "_id": 0 }
+)
+db.employees.insertOne({
+  "name": "John Doe",
+  "age": 30,
+  "department": "Sales",
+  "position": "Manager"
+})
+
+db.employees.insertMany([
+  {
+    "name": "Alice Smith",
+    "age": 25,
+    "department": "HR",
+    "position": "Recruiter"
+  },
+  {
+    "name": "Bob Johnson",
+    "age": 28,
+    "department": "Sales",
+    "position": "Salesperson"
+  }
+])
+
+db.employees.updateMany(
+  { "department": "Sales" },
+  { $set: { "department": "Business Development" } }
+)
+db.employees.deleteOne({ "name": "John Doe" })
+db.employees.deleteMany({ "department": "Sales" })
+db.employees.deleteMany({})
+

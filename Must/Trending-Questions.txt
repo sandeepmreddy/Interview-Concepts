@@ -4,8 +4,9 @@ Bankrptcy will release the loan and it updates all the necessary foreclosure ste
 
 Integration of the application and Reconsillation of various components. 
 
-The flow of th applcaition is 
+The flow of the applcaition is 
 Angular-->Microservices-->MSP-->DB
+Recenly I have built Kafka Project from scratch
 Applications are deployed in PCF,Cloud management portal.
 
 Front end Angular Compoents, RX JS (state, Action,Effects)
@@ -79,6 +80,40 @@ For example, when you are calling a 3rd party application, it takes more time to
 })
 private String fallback_hello() {
    return "Request fails. It takes long time to response";
+   
+   Resilent4J
+   import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+
+@SpringBootApplication
+@EnableCircuitBreaker
+public class Resilience4jApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Resilience4jApplication.class, args);
+    }
+}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      backendA:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: COUNT_BASED
+        minimumNumberOfCalls: 5
+  retry:
+    instances:
+      backendA:
+        maxAttempts: 3
+        waitDuration: 500ms
+        retryExceptions:
+          - java.lang.RuntimeException
+
    
 3. Log4j.properties
 
