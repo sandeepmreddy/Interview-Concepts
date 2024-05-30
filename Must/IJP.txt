@@ -1,0 +1,48 @@
+OAuth2
+Kafka streams : Done
+Swagger Configuration:Done
+Resilient 4j and Circuit Breaker:Done
+
+Spring Cloud:
+
+Spring Cloud provides a comprehensive suite of tools that simplify the development, deployment, and management of distributed systems and microservices, enhancing scalability, reliability, and maintainability.
+
+Spring Security
+
+APIGEE token also verified by JWT
+
+Functional interface:
+Examples:
+Predicate<T>: Represents a boolean-valued function of one argument.
+Function<T, R>: Represents a function that accepts one argument and produces a result.
+ // Define a Function that converts a String to its length
+        Function<String, Integer> stringLengthFunction = (String s) -> s.length();
+        
+        // Apply the Function to a given String
+        String testString = "Hello, World!";
+        int length = stringLengthFunction.apply(testString);
+		
+Supplier<T>: Represents a supplier of results, which takes no arguments and returns a result.
+Consumer<T>: Represents an operation that accepts a single argument and returns no result.
+
+Mongo Db Projections
+
+streams vs collections : streams will not occupy any memory like collections and those are immutable and ideal to use for kafka records like million
+
+ParalleStream limitations :
+
+Debugging parallel stream
+1.Debugging parallel streams can be more challenging like race conditions, deadlocks
+2.higher CPU and memory usage
+3.Operations with side effects are problematic in parallel streams. For example, modifying external data structures or performing I/O operations within a stream can lead to inconsistent results or performance degradation.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+int[] sum = {0};
+numbers.parallelStream().forEach(n -> sum[0] += n);
+System.out.println(sum[0]);
+This code can produce incorrect results due to race conditions when multiple threads update the shared sum array.
+
+For a small list, the overhead of managing parallel threads can make this slower than using a sequential stream.
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+numbers.parallelStream().forEach(System.out::println);
+

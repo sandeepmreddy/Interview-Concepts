@@ -651,3 +651,49 @@ What is Angular Universal?
 SSR-Server side rendering
 What are some strategies for optimizing Angular applications for better performance?
 Lazy loading,AOT,Treeshaking,bundle size
+
+70.JS closure It preserve the value inside the function.
+
+var addTo = function(passed){
+    
+    var add = function(inner){
+       return passed + inner;  
+    };
+    
+    return add;   
+};
+
+
+var addThree = new addTo(3);
+var addFour = new addTo(4);
+
+//console.dir(addThree);
+//console.dir(addFour);
+
+console.log(addThree(1));
+console.log(addFour(1));
+
+
+The JavaScript prototype property allows you to add new properties to object constructors:
+
+Example
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+Person.prototype.nationality = "English";
+The JavaScript prototype property also allows you to add new methods to objects constructors:
+
+function Person(first, last, age, eyecolor) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eyecolor;
+}
+
+Person.prototype.name = function() {
+  return this.firstName + " " + this.lastName;
+};
