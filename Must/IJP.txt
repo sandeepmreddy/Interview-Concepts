@@ -1,6 +1,6 @@
 OAuth2
 Kafka streams : Done
-Swagger Configuration:Done
+Swagger Configuration:Done -- @EnableSwagger2
 Resilient 4j and Circuit Breaker:Done
 
 Spring Cloud:
@@ -25,7 +25,9 @@ Function<T, R>: Represents a function that accepts one argument and produces a r
 Supplier<T>: Represents a supplier of results, which takes no arguments and returns a result.
 Consumer<T>: Represents an operation that accepts a single argument and returns no result.
 
-Mongo Db Projections
+Mongo Db Projections :
+
+MongoDB provides a special feature that is known as Projection. It allows you to select only the necessary data rather than selecting whole data from the document. For example, a document contains 5 fields.
 
 streams vs collections : streams will not occupy any memory like collections and those are immutable and ideal to use for kafka records like million
 
@@ -45,4 +47,6 @@ This code can produce incorrect results due to race conditions when multiple thr
 For a small list, the overhead of managing parallel threads can make this slower than using a sequential stream.
 List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
 numbers.parallelStream().forEach(System.out::println);
+
+Mono is asynochronous and no blocking thread ,max single object
 

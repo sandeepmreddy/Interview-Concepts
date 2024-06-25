@@ -1,0 +1,30 @@
+The application is Home lending application and this deals with loss mitigation.
+If the customer is facing hardship, Early resolution application provides zero payments for six months.
+Bankrptcy will release the loan and it updates all the necessary foreclosure step codes.
+
+Integration of the application and Reconsillation of various components. 
+
+The flow of the applcaition is 
+Angular-->Microservices-->MSP-->DB
+Recenly I have built Kafka Project from scratch
+Applications are deployed in PCF,Cloud management portal.
+
+Front end Angular Compoents, RX JS (state, Action,Effects)
+Backend is with legacy rest apis and Micro services
+Angular2-->APIGateWay((Spring Cloud,Zuul,Apigee))-->Service Registry(Eurekha,Zookeeper)->Micro services->Oracle
+APIGateWay-->Config Server->Many RestApis 
+Eurekha Server for Services dispaly -- Eureka server plays a critical role 
+in microservices architecture by enabling service registration, discovery, and load balancing, making it easier to build and manage distributed systems.
+(Zookeeper is Alternative to Eurekha Server, Zookeeper is a more mature and battle-tested technology)
+
+Execcutor Frame work
+Websphere and Weblogic cluster.
+4.	
+@ConditionalOnProperty(prefix = "spring", name = "asy.library.type", havingValue = "rest", matchIfMissing = true)
+public class LibRestClientAutoConfiguration {
+
+    	
+    	
+    	
+    	
+    	

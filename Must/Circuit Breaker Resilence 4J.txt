@@ -14,8 +14,13 @@ For example, when you are calling a 3rd party application, it takes more time to
 private String fallback_hello() {
    return "Request fails. It takes long time to response";
    
-   Resilent4J
-   import org.springframework.boot.SpringApplication;
+   
+   
+   
+Resilent4J
+   
+   
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 
@@ -37,7 +42,7 @@ resilience4j:
         failureRateThreshold: 50
         waitDurationInOpenState: 10000
         permittedNumberOfCallsInHalfOpenState: 3
-        slidingWindowType: COUNT_BASED
+        slidingWindowType: COUNT_BASED or TIME_BASED 
         minimumNumberOfCalls: 5
   retry:
     instances:

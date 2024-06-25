@@ -1,3 +1,6 @@
+ 
+Future provides a basic, unidirectional way to manage asynchronous computation but lacks non-blocking functionality and advanced control like combining results or handling errors. CompletableFuture, introduced in Java 8, extends Future
+ 
  Future<String> result;
  List<ReportTask> tasks = getReportTasks();
         ExecutorService processExecutor = Executors.newFixedThreadPool(NUM_COMPOSITION_THREADS);
@@ -77,3 +80,52 @@ ExecutorService executor =
 							   
 CompletableFuture<String> futureOutput =
         CompletableFuture.supplyAsync(() -> "test", executor);
+		
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.concurrent.CompletableFuture;
+
+public class AsyncHttpGet {
+    private static final HttpClient httpClient = HttpClient.newHttpClient();
+
+    // Method to perform an asynchronous GET request
+    public static CompletableFuture<String> fetchUrl(String url) {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+
+        return httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body); // Extract the body as a String
+    }
+
+    public static void main(String[] args) {
+        String url1 = "https://example.com/api/data1";
+        String url2 = "https://example.com/api/data2";
+
+        // Fetch multiple URLs asynchronously
+        CompletableFuture<String> future1 = fetchUrl(url1);
+        CompletableFuture<String> future2 = fetchUrl(url2);
+
+        // Use CompletableFuture.allOf to wait for all futures to complete
+        CompletableFuture<Void> allFutures = CompletableFuture.allOf(future1, future2);
+
+        // Handle the results after all futures are complete
+        allFutures.thenRun(() -> {
+            try {
+                String result1 = future1.get(); // Get the result of the first future
+                String result2 = future2.get(); // Get the result of the second future
+
+                System.out.println("Response from URL1: " + result1);
+                System.out.println("Response from URL2: " + result2);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        // Keep the program running until all futures are processed
+        allFutures.join();
+    }
+}

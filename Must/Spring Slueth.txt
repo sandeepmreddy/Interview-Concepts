@@ -1,0 +1,56 @@
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-sleuth</artifactId>
+</dependency>
+
+
+spring.application.name=service1
+logging.level.org.springframework.cloud.sleuth=DEBUG
+
+
+logback.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level ${springAppName:-} [%X{traceId},%X{spanId}] --- [%logger{36}] : %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.sleuth.annotation.NewSpan;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MyService {
+
+    private static final Logger logger = LoggerFactory.getLogger(MyService.class);
+
+    @Autowired
+    private AnotherService anotherService;
+
+    @NewSpan("mySpan")
+    public void doSomething() {
+        logger.info("Doing something...");
+        anotherService.doSomethingElse();
+    }
+}
+
+
+
+Running Multiple Microservices:
+
+Ensure that each microservice has a unique spring.application.name. When running multiple instances, make sure they are configured to propagate trace headers. By default, Sleuth propagates trace headers via HTTP headers (X-B3-TraceId and X-B3-SpanId). Ensure your HTTP client (e.g., RestTemplate, WebClient) is configured to propagate these headers between microservices.
