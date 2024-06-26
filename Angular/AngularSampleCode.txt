@@ -1,46 +1,117 @@
-<div> <input type="button" click="adItem()" </div>
+To create an Angular program that fetches data from HTTP calls and displays it on the UI, follow these steps:
 
-import { Component } from '@angular/core';
+Set up an Angular Project: If you haven't already, set up a new Angular project using the Angular CLI.
+sh
+Copy code
+ng new httpClientExample
+cd httpClientExample
+ng serve
+Generate a Service for HTTP Calls: Use the Angular CLI to generate a service that will handle your HTTP requests.
+sh
+Copy code
+ng generate service data
+Install HttpClient Module: Ensure you have the HttpClientModule installed. If not, install it via npm.
+sh
+Copy code
+npm install @angular/common@latest --save
+Update the AppModule: Import the HttpClientModule in your app.module.ts.
+typescript
+Copy code
+// src/app/app.module.ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
-@Component ({
-   selector: 'addItem',
-   template: `addItem.html`,
+import { AppComponent } from './app.component';
+import { DataService } from './data.service';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule
+  ],
+  providers: [DataService],
+  bootstrap: [AppComponent]
 })
+export class AppModule { }
+Create the Service to Fetch Data: Implement HTTP GET request in your service.
+typescript
+Copy code
+// src/app/data.service.ts
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-export class AppComponent {
-   title: string = 'Adding items';
-   name: String;
-   qty:Integer;
-   
-   constrctor(itemService: ItemService)
-   {
-   }
-   
-   adItem()
-   {
-     itemService.addItem(name,qty);
-   }
-   
-}
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
 
-export class ItemService()
-{
- constrctor(itemResource:ItemResource)
-   {
-   }
-   adItem()
-   {
-   item.setQty(qty);
-   item.setName(name);
-     itemService.addItem();
-   }
-}
+  private apiUrl = 'https://jsonplaceholder.typicode.com/posts'; // Example API
 
-export class ItemResource()
-{
-constructor(private http: HttpClient) { }
-   addItem(item: Item) {
-  return this.http.post(
-    addItemUrl, item);
+  constructor(private http: HttpClient) { }
+
+  getData(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
 }
+Create a Component to Display Data: Generate a component to display the data.
+sh
+Copy code
+ng generate component data-display
+Update the Component to Display Data: Fetch data from the service and display it in the template.
+typescript
+Copy code
+// src/app/data-display/data-display.component.ts
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+
+@Component({
+  selector: 'app-data-display',
+  templateUrl: './data-display.component.html',
+  styleUrls: ['./data-display.component.css']
+})
+export class DataDisplayComponent implements OnInit {
+
+  data: any[] = [];
+
+  constructor(private dataService: DataService) { }
+
+  ngOnInit(): void {
+    this.dataService.getData().subscribe(
+      (response) => {
+        this.data = response;
+      },
+      (error) => {
+        console.error('Error fetching data', error);
+      }
+    );
+  }
 }
+Update the Template to Display Data: Use Angular's structural directives to display the data.
+html
+Copy code
+<!-- src/app/data-display/data-display.component.html -->
+<div *ngIf="data.length">
+  <ul>
+    <li *ngFor="let item of data">
+      {{ item.title }}
+    </li>
+  </ul>
+</div>
+<div *ngIf="!data.length">
+  Loading data...
+</div>
+Add the Component to App Component Template: Include your new component in the main app template.
+html
+Copy code
+<!-- src/app/app.component.html -->
+<app-data-display></app-data-display>
+Run the Application: Start the Angular application.
+sh
+Copy code
+ng serve
+This will set up an Angular application that fetches data from an API and displays it on the UI screen. Make sure to replace the URL in data.service.ts with your actual API endpoint.

@@ -33,3 +33,23 @@ db.employees.deleteOne({ "name": "John Doe" })
 db.employees.deleteMany({ "department": "Sales" })
 db.employees.deleteMany({})
 
+Code
+--------------------
+
+MongoClient mongoClient = new MongoClient("localhost", 27017);
+MongoDatabase database = mongoClient.getDatabase("yourDatabase");
+ClientSession session = mongoClient.startSession();
+
+try {
+    session.startTransaction();
+    MongoCollection<Document> collection = database.getCollection("yourCollection");
+    collection.insertOne(session, new Document("name", "Alice"));
+    collection.updateOne(session, eq("name", "Alice"), new Document("$set", new Document("age", 25)));
+    session.commitTransaction();
+} catch (Exception e) {
+    session.abortTransaction();
+} finally {
+    session.close();
+}
+
+

@@ -2,7 +2,13 @@ SAST (Static Application Security Testing) and DAST (Dynamic Application Securit
 
 Describe your experience with secure coding practices in Java.Answer: "I have extensive experience implementing secure coding practices in Java applications, adhering to OWASP guidelines and industry best practices. This includes input validation to prevent injection attacks, proper session management to prevent unauthorized access, and implementing least privilege principles. I'm well-versed in using frameworks like Spring Security to enforce authentication and authorization controls, as well as utilizing cryptographic libraries for secure data transmission and storage."How would you integrate security testing into the SDLC (Software Development Life Cycle) for Java applications?Answer: "Integrating security testing into the SDLC is crucial for early detection and mitigation of vulnerabilities. I would collaborate closely with development teams to incorporate security testing at each stage of the SDLC, from requirements gathering to deployment. This could involve implementing security checkpoints in the CI/CD pipeline, conducting code reviews with a focus on security, and providing developers with training on secure coding practices specific to Java."
 
-SonarQube, TruffleHog(Secrts), and Checkmarx(Code) are SAST tools.Black Duck(External libraries) focuses on Software Composition Analysis (SCA).ThreadFix is a vulnerability management platform that integrates with various SAST, DAST, and other security testing tools.security vulnerabilities like SQL Injection, Cross-Site Scripting (XSS), and Server-Side Request Forgery (SSRF).
+SonarQube,
+ TruffleHog(Secrts), 
+ and Checkmarx(Code) 
+ are SAST tools.
+ Black Duck(External libraries)
+ focuses on Software Composition Analysis (SCA).
+ ThreadFix is a vulnerability management platform that integrates with various SAST, DAST, and other security testing tools.security vulnerabilities like SQL Injection, Cross-Site Scripting (XSS), and Server-Side Request Forgery (SSRF).
 sanitization, escaping, seesion hijacking(don't reveal session id), Authentication and authorization
 The OWASP Top 10 is a classification of the most common attacks on the web. It contains 10 entries, and these are: Injection, Broken Authentication and Session Management, Cross-Site Scripting, Insecure Direct Object References, Security Misconfiguration, Sensitive Data Discovery, Cross-Site Request Forgery, Using Components with Known Vulnerabilities, Insufficient Attack Protection, and Insufficient Authorization and Authentication.
 JSON Web Token Authentication
