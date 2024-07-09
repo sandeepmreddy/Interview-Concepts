@@ -50,3 +50,16 @@ numbers.parallelStream().forEach(System.out::println);
 
 Mono is asynochronous and no blocking thread ,max single object
 
+Try with Resource with Custom exception is possible.
+public class MyResource implements AutoCloseable
+public class Main {
+    public static void main(String[] args) {
+        try (MyResource resource = new MyResource("MyResource1")) {
+            resource.doSomething();
+        } catch (CustomException e) {
+            System.err.println("Caught CustomException: " + e.getMessage());
+        }
+    }
+}
+
+

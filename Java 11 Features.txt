@@ -1,0 +1,64 @@
+
+Java 11, released in September 2018, introduced several new features and enhancements that improve developer productivity and application performance. Here are some of the key features of Java 11:
+
+1. Local-Variable Syntax for Lambda Parameters
+Java 11 extends the use of the var keyword to lambda expressions. This makes the code more readable and concise.
+
+java
+Copy code
+(var x, var y) -> x + y
+2. HTTP Client (Standard)
+The new java.net.http package provides a modern and feature-rich HTTP client API, which supports HTTP/1.1 and HTTP/2. It was introduced as an incubator module in Java 9 and became standardized in Java 11.
+
+java
+Copy code
+HttpClient client = HttpClient.newHttpClient();
+HttpRequest request = HttpRequest.newBuilder()
+    .uri(URI.create("https://example.com"))
+    .build();
+HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+System.out.println(response.body());
+3. Running Java File with java Command
+Java 11 allows you to run a single source code file using the java command without compiling it separately. This feature is useful for scripting and small utilities.
+
+sh
+Copy code
+java HelloWorld.java
+4. Improved Garbage Collection
+Java 11 introduces a new garbage collector called ZGC (Z Garbage Collector), which is designed for low-latency and scalable applications.
+
+5. Flight Recorder
+Java Flight Recorder (JFR), a low-overhead data collection framework for troubleshooting and profiling Java applications, is now included.
+
+6. Deprecation and Removal of Features
+Java 11 deprecates and removes several outdated and unused features, including:
+
+Removal of the java.se.ee module.
+Removal of the javafx module.
+Removal of the javah tool.
+7. New Methods in Standard Library
+Several new methods were added to the standard library to simplify common tasks:
+
+String class:
+
+strip(), stripLeading(), stripTrailing()
+isBlank()
+lines()
+repeat(int count)
+Files class:
+
+writeString(), readString()
+mismatch()
+8. Nest-Based Access Control
+This feature introduces a new access control mechanism for nested classes, improving the security and maintainability of code.
+
+9. Unicode 10
+Java 11 supports Unicode 10, which includes new characters and symbols.
+
+10. Epsilon Garbage Collector
+Epsilon GC is a no-op garbage collector for testing purposes, which allocates memory but does not reclaim it.
+
+11. Dynamic Class-File Constants (JEP 309)
+This enhancement extends the constant pool with a new constant-pool form, making it easier to express common patterns in a more efficient manner.
+
+These features and enhancements make Java 11 a significant update, offering improved performance, security, and developer productivity.

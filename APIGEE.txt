@@ -1,0 +1,32 @@
+Login to Apigee Edge:
+Create a New API Proxy
+Choose Endpoint Security Options: API_KEY
+ Configure API Policies 
+ Configure Target Server(Define Target Server,Update Target Endpoint)
+ Test Your API Proxy
+ Navigate to the Analytics section to monitor the API traffic, performance, and usage.
+ Use the Trace tool in the Apigee portal to debug and inspect the API calls and responses
+
+public static void testGetRequest() throws Exception {
+ private static final String API_URL = "https://your-api-endpoint.com/v1/your-resource";
+    private static final String API_KEY = "your-api-key";
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        try {
+            HttpGet request = new HttpGet(API_URL);
+            request.addHeader("Authorization", "Bearer " + API_KEY);
+            
+            CloseableHttpResponse response = httpClient.execute(request);
+            try {
+                System.out.println("GET Response Status: " + response.getStatusLine().getStatusCode());
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    String result = EntityUtils.toString(entity);
+                    System.out.println("Response Content: " + result);
+                }
+            } finally {
+                response.close();
+            }
+        } finally {
+            httpClient.close();
+        }
+    }
