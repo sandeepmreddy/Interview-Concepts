@@ -1,0 +1,7 @@
+User UI-->API GAteway --NewsFeed(Micro)-->Post(Retrieves data from various followers)
+NewsFeed(Micro)-->Cache(Places here around recent S20 messages )
+
+Entity Digram 
+Activity Table-->Content table
+Activity Table-->Likes table
+Activity Table-->Comments table

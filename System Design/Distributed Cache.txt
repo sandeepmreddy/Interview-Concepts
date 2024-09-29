@@ -1,0 +1,26 @@
+put(k,v)
+get(k)
+scalability (Across multiple hosts)
+availabilty -- (Master/Slave nodes)More partitions
+performance -- is though LRU
+
+Cache --> HashTable data structure
+
+LRU-->Least recenlty used
+
+Place elements in Hash Table and List
+
+When you element, place it in head and if the list is full remove the element from tail of the list and hash table.
+
+Cache client(To identify the partotions in the servers)
+-->Server1(Cache1 Partition1), Server2(Cache1 Partition2), Server3(Cache1 Partition3),
+
+
+Zoo Keeper Configuration Server checks whether all the nodes available.
+
+Consistency
+Data Expiration(Meta Data)(Low priority thread)
+Security- Firewall
+Monitoring,Logging
+Cache Client
+Consistent Cahing
