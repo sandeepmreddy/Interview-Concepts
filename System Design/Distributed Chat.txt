@@ -1,0 +1,43 @@
+One to One Chatting Web Socket
+One to Group chatting (Kafka Publish and Subscribe)
+
+
+Functional Requirements
+One one chat
+group chat
+read receipt
+online status
+notifications
+share multi media
+
+System Requirements
+Low Latency -- Performance
+High Reliability - Scalable
+High Avaialibilty 
+Mobile & Desktop
+Chat History
+High Blob Store
+End End Encryption
+Web Sockets(Open Connection)
+
+Storgae Estimation
+Total = 1.5 Billion messages
+
+API EndPoints
+SendMEssage(sender_user_id,Receiver_user_id,text)
+
+getMessage(user_id,screen_size,before_timestamp)
+
+Services
+-------------
+Messaging service-->
+Session Service(like a bootstrap)
+RelayService(Unseen Messages)
+LastSennService
+AssetService for(Multimedia objects like images in AWS S3 buckets/Blob Image)
+Group Service uses Kafka
+WebSocketManager
+Group Message Handler
+
+
+

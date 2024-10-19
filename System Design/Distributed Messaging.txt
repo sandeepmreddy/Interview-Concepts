@@ -1,4 +1,4 @@
-clent---?Send/Receieve-->Load Balancer -->Frondend --Back end
+clent--->Send/Receieve-->Load Balancer -->Frondend --Back end
 Frondend -->metadata service -->Metadata DB
 
 All backend messages are connected to File System.
@@ -7,3 +7,15 @@ It is scable by increasing the servers.
 It is available due to many patition replications
 Performance --> Micro services and Hard Wrae and read by offset
 Durable-->Stroring data
+
+ZooKeeper/Kafka Raft -->(It maintains Topic, Parttions, Offset for all the producers and consumers)
+Producer and Consumer has retrieving machanisam
+Consumer has Groups, but not producers
+In kafka Streams We don't use Consumer groups, by default we get those.Kafka streams use multiple groups based on the traffic.
+
+
+RoundRobinPartitioner - This is a simple way to distribute messages evenly across the available partitions
+Zookepes -> Has topic Nane, paritiona names, Offset of each partition
+Produce message has(key,value,topic, partition)
+For Bug message, Retrieve count 3 or 4
+Kind of queue/linked list is the patition in kafka

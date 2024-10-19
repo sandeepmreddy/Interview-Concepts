@@ -1,5 +1,10 @@
 User UI-->API GAteway --NewsFeed(Micro)-->Post(Retrieves data from various followers)
-NewsFeed(Micro)-->Cache(Places here around recent S20 messages )
+NewsFeed(Micro)-->Cache(Places here around recent 20 messages)
+
+LRU will be deleted from cache
+
+Images will be stored in the file server or BLOB/CLOB
+Data will be stored in no sql server and image links will be stored in DB
 
 Entity Digram 
 Activity Table-->Content table
