@@ -51,3 +51,23 @@ resilience4j:
         waitDuration: 500ms
         retryExceptions:
           - java.lang.RuntimeException
+  ratelimiter:
+    instances:
+      backendService:
+        limitForPeriod: 10
+        limitRefreshPeriod: 1s
+        timeoutDuration: 0
+		
+registerHealthIndicator: true – Enables Spring Boot Actuator health check for this circuit breaker.
+
+slidingWindowSize: 10 – Uses the last 10 calls to calculate failure rate.
+
+failureRateThreshold: 50 – Opens the circuit if 50% or more calls fail within the sliding window.
+
+waitDurationInOpenState: 10000 – Waits 10 seconds before transitioning from OPEN to HALF-OPEN state.
+
+permittedNumberOfCallsInHalfOpenState: 3 – Allows 3 test calls in HALF-OPEN state to check recovery.
+
+slidingWindowType: COUNT_BASED or TIME_BASED – Determines whether to measure failures by call count or time duration.
+
+minimumNumberOfCalls: 5 – Requires at least 5 calls before evaluating the failure rate.

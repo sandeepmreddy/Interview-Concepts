@@ -129,3 +129,24 @@ public class AsyncHttpGet {
         allFutures.join();
     }
 }
+
+Different Executor Frame works.
+
+
+1. **`Executors.newFixedThreadPool(int nThreads)`**
+   Creates a thread pool with a fixed number of threads that reuse existing threads for executing tasks.
+
+2. **`Executors.newSingleThreadExecutor()`**
+   Creates an executor that uses a single worker thread to execute tasks sequentially.
+
+3. **`Executors.newCachedThreadPool()`**
+   Creates a thread pool that creates new threads as needed and reuses previously constructed threads when available.
+
+4. **`Executors.newScheduledThreadPool(int corePoolSize)`**
+   Creates a thread pool that can schedule tasks to run after a delay or periodically.
+
+5. **`Executors.newWorkStealingPool()`**
+   Creates a thread pool using the work-stealing algorithm, ideal for parallel processing of many small tasks.
+
+
+

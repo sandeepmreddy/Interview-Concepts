@@ -1,0 +1,23 @@
+Eclipse MAT to analyze heap dumps. Other tools VisualVM, JProfiler
+
+4. Analyze the Heap
+MAT provides several useful features:
+
+✨ Top Reports
+Leak Suspects Report: Auto-generated analysis highlighting potential memory leaks.
+
+Top Consumers: Find the largest memory consumers.
+
+🔧 Manual Exploration
+Histogram: Shows object counts and retained sizes by class.
+
+Dominator Tree: Helps identify objects that prevent garbage collection.
+
+Object Query Language (OQL): Run SQL-like queries to filter and analyze data.
+
+Example:
+
+sql
+Copy
+Edit
+SELECT * FROM java.lang.String s WHERE s.value.toString().contains("password")
