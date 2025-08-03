@@ -1,0 +1,141 @@
+
+| Annotation                 | Purpose                                                                                                   | Example                                                                                                                          |
+| -------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `@SpringBootApplication`   | 
+| `@ComponentScan`           | Scans for components, configurations, and services in the specified package.                              | `@ComponentScan("com.example")`                                                                                                  |
+| `@EnableAutoConfiguration` | Enables auto-configuration based on classpath dependencies.                                               | 
+                                                                                                     |
+
+---
+
+## **2. Stereotype Annotations (Bean Creation)**
+
+| Annotation        | Purpose                                                                | Example                                          |
+| ----------------- | ---------------------------------------------------------------------- | ------------------------------------------------ |
+| `@Component`      | Generic Spring-managed component.                                      | `@Component public class MyBean {}`              |
+| `@Service`        | Specialized `@Component` for service layer.                            | `@Service public class UserService {}`           |
+| `@Repository`     | Specialized `@Component` for DAO layer. Enables exception translation. | `@Repository public interface UserRepository {}` |
+| `@Controller`     | Marks class as a Spring MVC Controller.                                | `@Controller public class HomeController {}`     |
+| `@RestController` | Combines `@Controller` and `@ResponseBody`. Returns JSON/XML.          | `@RestController public class ApiController {}`  |
+
+---
+
+## **3. Dependency Injection**
+
+| Annotation   | Purpose                                                                | Example                                                                      |
+| ------------ | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `@Autowired` | Injects beans automatically by type.                                   | `@Autowired private UserService userService;`                                |
+| `@Qualifier` | Used with `@Autowired` to resolve ambiguity when multiple beans exist. | `@Autowired @Qualifier("emailService") private NotificationService service;` |
+| `@Primary`   | Marks a bean as the primary candidate for autowiring.                  | `@Primary @Bean public DataSource dataSource() { ... }`                      |
+| `@Value`     | Injects values from properties or environment.                         | `@Value("${app.name}") private String appName;`                              |
+
+---
+
+## **4. Configuration & Bean Definition**
+
+| Annotation        | Purpose                                            | Example                                               |
+| ----------------- | -------------------------------------------------- | ----------------------------------------------------- |
+| `@Configuration`  | Indicates a class contains `@Bean` definitions.    | `@Configuration public class AppConfig {}`            |
+| `@Bean`           | Declares a bean inside `@Configuration` class.     | `@Bean public DataSource dataSource() { ... }`        |
+| `@PropertySource` | Loads properties from a file into the environment. | `@PropertySource("classpath:application.properties")` |
+
+---
+
+## **5. Web & REST API**
+
+| Annotation                                                        | Purpose                                  | Example                                                                      |
+| ----------------------------------------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------- |
+| `@RequestMapping`                                                 | Maps HTTP requests to handler methods.   | `@RequestMapping("/users")`                                                  |
+| `@GetMapping` / `@PostMapping` / `@PutMapping` / `@DeleteMapping` | Shortcut annotations for REST endpoints. | `@GetMapping("/users/{id}")`                                                 |
+| `@PathVariable`                                                   | Extracts variable from URL path.         | `@GetMapping("/users/{id}") public User getUser(@PathVariable int id)`       |
+| `@RequestParam`                                                   | Extracts query parameters.               | `@GetMapping("/search") public List<User> search(@RequestParam String name)` |
+| `@RequestBody`                                                    | Maps HTTP request body to a Java object. | `@PostMapping("/users") public void add(@RequestBody User user)`             |
+| `@ResponseBody`                                                   | Returns the response body as JSON/XML.   | Used in `@RestController`                                                    |
+
+---
+
+## **6. Data Access (Spring Data JPA)**
+
+| Annotation        | Purpose                                  | Example                                                                   |
+| ----------------- | ---------------------------------------- | ------------------------------------------------------------------------- |
+| `@Entity`         | Marks a class as a JPA entity.           | `@Entity public class User { @Id private Long id; }`                      |
+| `@Table`          | Maps an entity to a specific table.      | `@Table(name = "users")`                                                  |
+| `@Id`             | Marks a field as the primary key.        | `@Id private Long id;`                                                    |
+| `@GeneratedValue` | Defines primary key generation strategy. | `@GeneratedValue(strategy = GenerationType.IDENTITY)`                     |
+| `@Column`         | Maps a field to a database column.       | `@Column(name = "user_name")`                                             |
+| `@Repository`     | Data access layer bean.                  | `@Repository public interface UserRepo extends JpaRepository<User, Long>` |
+
+---
+
+## **7. Spring Boot Testing**
+
+| Annotation        | Purpose                                                     | Example                                           |
+| ----------------- | ----------------------------------------------------------- | ------------------------------------------------- |
+| `@SpringBootTest` | Loads complete application context for integration testing. | `@SpringBootTest public class UserServiceTest {}` |
+| `@MockBean`       | Creates a mock bean in the Spring context.                  | `@MockBean private UserRepository repo;`          |
+| `@WebMvcTest`     | Loads only web layer for testing controllers.               | `@WebMvcTest(UserController.class)`               |
+
+---
+
+## **8. Other Useful Annotations**
+
+| Annotation          | Purpose                                         | Example                                    |
+| ------------------- | ----------------------------------------------- | ------------------------------------------ |
+| `@EnableScheduling` | Enables scheduling for tasks with `@Scheduled`. | `@EnableScheduling`                        |
+| `@Scheduled`        | Schedules tasks.                                | `@Scheduled(fixedRate = 5000)`             |
+| `@EnableCaching`    | Enables Spring’s caching mechanism.             | `@EnableCaching`                           |
+| `@Cacheable`        | Marks a method’s result to be cached.           | `@Cacheable("users")`                      |
+| `@Transactional`    | Manages transactions for database operations.   | `@Transactional public void saveUser() {}` |
+
+---
+
+Here’s a complete list of **JUnit and Spring Boot Testing annotations** you should know for interviews, along with their purpose and examples:
+
+---
+
+## **1. Core JUnit 5 Annotations**
+
+| Annotation    | Purpose                                             | Example                                   |
+| ------------- | --------------------------------------------------- | ----------------------------------------- |
+| `@Test`       | Marks a method as a test case.                      | `@Test void testUserCreation() { ... }`   |
+| `@BeforeEach` | Runs before each test method. Used for setup.       | `@BeforeEach void setUp() { ... }`        |
+| `@AfterEach`  | Runs after each test method. Used for cleanup.      | `@AfterEach void tearDown() { ... }`      |
+| `@BeforeAll`  | Runs once before all test methods (must be static). | `@BeforeAll static void init() { ... }`   |
+| `@AfterAll`   | Runs once after all test methods (must be static).  | `@AfterAll static void cleanUp() { ... }` |
+| `@Disabled`   | Disables a test method or class.                    | `@Disabled("Temporarily disabled")`       |
+
+---
+
+## **2. Spring Boot Test Annotations**
+
+| Annotation              | Purpose                                                       | Example                                         |
+| ----------------------- | ------------------------------------------------------------- | ----------------------------------------------- |
+| `@SpringBootTest`       | Loads full application context for integration tests.         | `@SpringBootTest class UserServiceTest { ... }` |
+| `@WebMvcTest`           | Loads only web layer for controller testing.                  | `@WebMvcTest(UserController.class)`             |
+| `@DataJpaTest`          | Loads only JPA-related components for repository testing.     | `@DataJpaTest class UserRepositoryTest { ... }` |
+| `@RestClientTest`       | Tests REST clients (like `RestTemplate` or `WebClient`).      | `@RestClientTest(UserClient.class)`             |
+| `@JsonTest`             | Tests JSON serialization and deserialization.                 | `@JsonTest class UserJsonTest { ... }`          |
+| `@AutoConfigureMockMvc` | Configures `MockMvc` for testing without starting the server. | `@AutoConfigureMockMvc`                         |
+
+---
+
+## **3. Mocking and Dependency Injection**
+
+| Annotation   | Purpose                                                       | Example                                  |
+| ------------ | ------------------------------------------------------------- | ---------------------------------------- |
+| `@MockBean`  | Creates a mock bean in Spring context (replaces actual bean). | `@MockBean private UserRepository repo;` |
+| `@SpyBean`   | Creates a spy bean in Spring context (partial mocking).       | `@SpyBean private UserService service;`  |
+| `@Autowired` | Injects beans into the test class.                            | `@Autowired private MockMvc mockMvc;`    |
+
+---
+
+## **4. Transaction and Context Management**
+
+| Annotation        | Purpose                                                      | Example                                           |
+| ----------------- | ------------------------------------------------------------ | ------------------------------------------------- |
+| `@Transactional`  | Rolls back database changes after each test.                 | `@Transactional class UserRepositoryTest { ... }` |
+| `@Rollback`       | Explicitly mark if a test transaction should be rolled back. | `@Rollback(false)`                                |
+| `@DirtiesContext` | Marks the context as dirty so it will be reloaded.           | `@DirtiesContext`                                 |
+
+---
+

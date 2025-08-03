@@ -1,0 +1,71 @@
+1.Observables vs	Promises
+Emit multiple values over a period of time.	Emit a single 
+ at a time.
+Are lazy: they’re not executed until we subscribe to them using the subscribe() method.	Are not lazy: execute immediately after creation.
+Have subscriptions that are cancellable using the unsubscribe() method, which stops the listener from receiving further values.	Are not cancellable.
+Provide the map for forEach, filter, reduce, retry, and retryWhen operators.	Don’t provide any operations.
+Deliver errors to the subscribers.	Push errors to the child promises.
+
+2.Data Binding--> Two way data binding
+Model-><-View
+
+Interpolation Property--> from  Component to view
+
+{{expression}}
+[target]="expression"
+
+Event binding --> from view to Component
+(target)="statement"
+One-way
+
+to data source
+Two-way	
+
+[(target)]="expression"
+Two-way
+
+3. Angular root component has services, components ,root component and module imports.
+BrowserModule,
+FormsModule,
+HttpClientModule
+
+4. From child component to parent component communication.
+export class ChildComponent {
+  @Output() messageToParent = new EventEmitter<string>();
+
+  sendMessage() {
+    this.messageToParent.emit('Hello Parent!');
+  }
+}
+
+and parent to child.
+
+@Component({
+  selector: 'app-parent',
+  template: `
+    <app-child [message]="parentMessage"></app-child>
+  `
+})
+export class ParentComponent {
+  parentMessage = 'Hello from Parent!';
+}
+
+5. Change Detection strategies and mechanisms like 
+ChangeDetectorRef: Needed when updates happen outside Angular (e.g., setTimeout, third-party libs).
+NgZone,
+run(fn) – Runs a function inside Angular zone (triggers change detection).
+ and runOutsideAngular 
+runOutsideAngular(fn) – Runs code outside Angular zone (does not trigger change detection).
+
+6. How do you optimize Angular app performance?
+Use OnPush change detection
+
+Use trackBy in *ngFor
+
+Lazy load feature modules
+
+Use pure pipes
+
+Minimize DOM updates
+
+Avoid unnecessary subscriptions

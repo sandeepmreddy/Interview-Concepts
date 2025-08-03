@@ -44,3 +44,6 @@ public class KafkaStreamsBranchExample {
         Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
     }
 }
+
+AVRO frame work
+Notification Object

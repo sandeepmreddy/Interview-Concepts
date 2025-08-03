@@ -1,0 +1,13 @@
+@Before: Use JoinPoint to inspect method name or arguments before execution
+
+@After, @AfterReturning, @AfterThrowing: To inspect results or exceptions
+
+@Around: You use ProceedingJoinPoint, which is a subclass of JoinPoint, allowing you to control method execution (e.g., calling proceed())
+
+@Around("execution(* com.example.service.*.*(..))")
+public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    System.out.println("Before: " + joinPoint.getSignature());
+    Object result = joinPoint.proceed();
+    System.out.println("After: " + joinPoint.getSignature());
+    return result;
+}

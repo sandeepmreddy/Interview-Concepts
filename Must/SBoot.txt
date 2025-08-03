@@ -154,3 +154,7 @@ public class MyRestController {
     public String hello() {
         return "Hello, World!";
     }
+	
+2. @RestController vs @Controller?
+
+✅ @RestController = @Controller + @ResponseBody (all methods return JSON/XML directly)

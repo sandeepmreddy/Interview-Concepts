@@ -1,0 +1,35 @@
+**Main Purposes of an API Gateway:**
+
+1. **Request Routing:**
+
+   * Routes incoming requests to the appropriate microservice.
+
+2. **Security (Authentication & Authorization):**
+
+   * Verifies user credentials (e.g., via JWT, OAuth2).
+   * Can restrict access to certain services.
+
+3. **Load Balancing:**
+
+   * Distributes incoming traffic across multiple instances of a service.
+
+4. **Rate Limiting & Throttling:**
+
+   * Limits the number of requests to prevent abuse.
+
+5. **Caching:**
+
+   * Caches common responses to improve performance.
+
+6. **Request/Response Transformation:**
+
+   * Modifies request or response formats (e.g., converting XML to JSON).
+
+7. **Logging & Monitoring:**
+
+   * Captures logs and metrics for observability and debugging.
+
+8. **Centralized Error Handling:**
+
+   * Handles common error responses and formatting in a consistent way.
+

@@ -30,12 +30,12 @@ Default methods,
 Base64 Encode Decode,
 Static methods in interface,
 IO Enhancements,
-Concurrency Enhancements,
+Concurrency Enhancements,CompletableFuture 
 
 
 @FunctionalInterface Important Points/Observations:  
 
-1.A functional interface has only one abstract method but it can have multiple default methods.
+1.A functional interface has only one abstract method but it can have multiple default and static methods.
 2. @FunctionalInterface annotation is used to ensure an interface can’t have more than one abstract method. The use of this annotation is optional.
 3. The java.util.function package contains many builtin functional interfaces in Java 8.
 
@@ -85,12 +85,14 @@ T	get() -- SAM
 @FunctionalInterface
 public interface Function<T,R>
 
-Modifier and Type	Method and Description
-default <V> Function<T,V>	andThen(Function<? super R,? extends V> after)
-Returns a composed function that first applies this function to its input, and then applies the after function to the result.
-R	apply(T t) -- SAM
-Applies this function to the given argument.
-default <V> Function<V,R>	compose(Function<? super V,? extends T> before)
-Returns a composed function that first applies the before function to its input, and then applies this function to the result.
-static <T> Function<T,T>	identity()
-Returns a function that always returns its input argument.
+
+Common Java Functional Interfaces (from java.util.function package):
+Runnable – void run()
+
+Supplier<T> – T get()
+
+Consumer<T> – void accept(T t)
+
+Function<T, R> – R apply(T t)
+
+Predicate<T> – boolean test(T t)

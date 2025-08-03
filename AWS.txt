@@ -1,0 +1,13 @@
+Choose ECS if:
+You want to deploy Spring Boot/Dockerized apps quickly.
+
+You prefer AWS-native solutions and don’t need full Kubernetes control.
+
+You want to use Fargate (serverless containers) easily.
+
+✅ Choose EKS if:
+
+You want to use advanced K8s features (e.g., Helm, CRDs, service meshes).
+
+You're managing large, complex, microservices architectures.
+

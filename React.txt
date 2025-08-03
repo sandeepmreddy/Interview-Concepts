@@ -1,0 +1,57 @@
+3. What is JSX?
+Answer:
+JSX stands for JavaScript XML. It allows us to write HTML in React. JSX makes it easier to write and add HTML in React.
+
+jsx
+const element = <h1>Hello, world!</h1>;
+
+4. What is the Virtual DOM?
+Answer:
+The Virtual DOM is a lightweight JavaScript object which is a copy of the real DOM. React updates the virtual DOM first, compares it with the previous version (diffing), and then updates the actual DOM only where necessary.
+
+5. What are functional components and class components?
+Answer:
+
+Functional Components: Simple JavaScript functions that return JSX.
+
+Class Components: ES6 classes that extend React.Component and use lifecycle methods.
+6. What are React Hooks?
+Answer:
+Hooks let you use state and lifecycle features in functional components. Common hooks:
+
+useState
+
+useEffect
+
+useContext
+
+useMemo
+
+useRef
+
+7. What is useState in React?
+Answer:
+useState is a hook that allows you to add state to functional components.
+
+jsx
+Copy
+Edit
+const [count, setCount] = useState(0);
+
+8. What is useEffect used for?
+Answer:
+useEffect performs side effects (e.g., data fetching, DOM manipulation).
+
+jsx
+Copy
+Edit
+useEffect(() => {
+  // side effect code
+}, []);
+
+15. What is the difference between useMemo and useCallback?
+Answer:
+
+useMemo: Memoizes the return value of a function.
+
+useCallback: Memoizes the function itself to prevent unnecessary re-creations.

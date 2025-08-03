@@ -1,0 +1,16 @@
+@EnableWebSecurity -- It is not need from Spring Boot3
+To get all pods in kubernetis: kubectl get pods --all-namespaces
+@SpringBootApplication	Combines @Configuration, @EnableAutoConfiguration, and @ComponentScan.
+@Component,@Service,@Repository	,@Controller	
+@RestController	Combines @Controller and @ResponseBody. Returns JSON/XML.
+
+@Qualifier	Used with @Autowired to resolve ambiguity when multiple beans exist.	@Autowired @Qualifier("emailService") private NotificationService service;
+@Primary	Marks a bean as the primary candidate for autowiring.	@Primary @Bean public DataSource dataSource() { ... }
+@Value	Injects values from properties or environment.	@Value("${app.name}") private String appName;
+
+@RequestMapping	Maps HTTP requests to handler methods.	@RequestMapping("/users")
+@GetMapping / @PostMapping / @PutMapping / @DeleteMapping	Shortcut annotations for REST endpoints.	@GetMapping("/users/{id}")
+@PathVariable	Extracts variable from URL path.	@GetMapping("/users/{id}") public User getUser(@PathVariable int id)
+@RequestParam	Extracts query parameters.	@GetMapping("/search") public List<User> search(@RequestParam String name)
+@RequestBody	Maps HTTP request body to a Java object.	@PostMapping("/users") public void add(@RequestBody User user)
+@ResponseBody	Returns the response body as JSON/XML.

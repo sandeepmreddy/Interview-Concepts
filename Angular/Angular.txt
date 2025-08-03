@@ -56,23 +56,7 @@ It is aimed to devlop single page applications(SPA)
 A)Type script is superset of java script and offers excellent consistency
 Type script can be installed with NPM package
 npm install -g typescript
-3.Data Binding--> Two way data binding
-Model-><-View
 
-Interpolation Property--> from  Component to view
-
-{{expression}}
-[target]="expression"
-
-Event binding --> from view to Component
-(target)="statement"
-One-way
-
-to data source
-Two-way	
-
-[(target)]="expression"
-Two-way
 4.SPA-->Single page application-->New HTML page are not loaded to display the new page's content,instead generated dynamically.
 5. Angular JS vs Angular
 a)Language:java script vs type script
@@ -234,8 +218,8 @@ export class AppComponent implements OnInit {
 }
 
 32. https://www.pluralsight.com/guides/difference-between-template-driven-and-reactive-forms-angula
-Template Driven Forms like struts forms
-Reactive forms create using .create,FormBuilder,FormGroup
+Template Driven Forms Uses ngModel for two-way binding. It is a normal form
+Reactive forms Uses FormControl, FormGroup, FormBuilder
 33. Bootstrap loading?
 34. Eager and Lazy loading-->same like spring
 Angular uses lazy loading by default for routing modules.
@@ -280,8 +264,8 @@ impure : pure:false bring the data immediatly
 A pure pipe is only called when Angular detects a change in the value or the parameters passed to a pipe.An impure pipe is called for every change detection cycle no matter whether the value or parameter(s) changes
 Test cases execution
 @ContentChild and @ViewChild
-Custom pipes 
 
+Custom pipes 
 export class FetchJsonPipe implements PipeTransform {
   private cachedData: any = null;
   private cachedUrl = '';
@@ -300,12 +284,7 @@ export class FetchJsonPipe implements PipeTransform {
 }
 
 
-Observables vs	Promises
-Emit multiple values over a period of time.	Emit a single value at a time.
-Are lazy: they’re not executed until we subscribe to them using the subscribe() method.	Are not lazy: execute immediately after creation.
-Have subscriptions that are cancellable using the unsubscribe() method, which stops the listener from receiving further values.	Are not cancellable.
-Provide the map for forEach, filter, reduce, retry, and retryWhen operators.	Don’t provide any operations.
-Deliver errors to the subscribers.	Push errors to the child promises.
+
 
 https://www.syncfusion.com/blogs/post/angular-promises-versus-observables.aspx
 
@@ -474,9 +453,9 @@ A Subject is like an Observable, but can multicast to many Observers. Subjects a
    
 54.What is DOM sanitizer?
 DomSanitizer is used to help preventing Cross Site Scripting Security bugs (XSS) by sanitizing values to be safe to use in the different DOM contexts.
+
 55.What are the applications of HTTP interceptors?
 The HTTP Interceptors can be used for different variety of tasks,
-
 Authentication
 Logging
 Caching
